@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :email, :username, :uniqueness => true
   validates :role, :inclusion => roles.keys
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable
 end

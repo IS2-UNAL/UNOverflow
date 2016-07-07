@@ -37,7 +37,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, :for=>"passwordConfirmationField" %><br />
+    <%= f.label :password_confirmation, :for=>"newPasswordConfirmationField" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :id=>"passwordConfirmationField" %>
   </div>
   <div class="row">
@@ -49,5 +49,5 @@
     </div>
   </div>
 
-  <%= f.submit "Sign up", :class=>"btn btn-success btn-lg btn-success" %><br /><br /><br /><br />
+  <%= f.submit "Sign up", :class=>"btn btn-success btn-lg btn-success", :id=>"registerButton" %><br /><br /><br /><br />
 <% end %>
