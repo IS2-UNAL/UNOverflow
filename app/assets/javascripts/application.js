@@ -15,4 +15,6 @@
 //= require jquery-ui/effect-blind
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
+//= require bootstrap/dropdown
 //= require_tree .

@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h2>Sign up</h2>
+  <%= render "devise/shared/links" %>
+</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <% if devise_error_messages! != "" %>
+    <div class="alert alert-danger alert-dismissible fade-in" role="alert">
+      <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
+      <%= devise_error_messages! %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :email, :for=>"emailField"%><br />
+    <%= f.email_field :email, autofocus: true, :class=>"form-control", :id=>"emailField" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, :for=>"nameField"%><br />
+    <%= f.text_field :name, :class=>"form-control", :id=>"nameField" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :username, :for=>"usernameField"%><br />
+    <%= f.text_field :username, :class=>"form-control", :id=>"usernameField" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, :for=>"passwordField" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :id=>"passwordField" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, :for=>"passwordConfirmationField" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :id=>"passwordConfirmationField" %>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <%= f.label :role, :for=>"roleField" %>
+        <%= f.select(:role, User.roles.keys, {}, { :class=>"form-control" , :id=>"roleField"}) %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit "Sign up", :class=>"btn btn-success btn-lg btn-success" %><br /><br /><br /><br />
+<% end %>

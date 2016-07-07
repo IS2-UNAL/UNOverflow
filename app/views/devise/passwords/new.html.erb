@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h2>Forgot your password?</h2>
+  <%= render "devise/shared/links" %>
+
+</div>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <% if devise_error_messages! != "" %>
+    <div class="alert alert-danger alert-dismissible fade-in" role="alert">
+      <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
+      <%= devise_error_messages! %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :email, :for=>"emailField" %><br />
+    <%= f.email_field :email, autofocus: true, :class=>"form-control",:id=>"emailField" %>
+  </div>
+
+
+  <%= f.submit "Send me reset password instructions", :class>="btn btn-success" %>
+<% end %>
