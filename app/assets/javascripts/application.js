@@ -14,7 +14,8 @@
 //= require bootstrap-sprockets
 //= require jquery-ui/effect-blind
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.turbolinks
 //= require bootstrap/dropdown
-//= require_tree .
+//= require zxcvbn
+//= require password
+//= require turbolinks

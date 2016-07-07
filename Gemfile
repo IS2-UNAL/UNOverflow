@@ -21,6 +21,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'jquery-ui-rails'
 gem 'devise'
+gem 'devise_zxcvbn'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

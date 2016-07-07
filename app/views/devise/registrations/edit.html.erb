@@ -27,8 +27,8 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :password, :for=>"passwordField" %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :id=>"passwordField" %>
+    <%= f.label :password, :for=>"newPasswordField" %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "off", :class=>"form-control", :id=>"newPasswordField" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -36,8 +36,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, :for=>"passwordConfirmationField" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :id=>"passwordConfirmationField" %>
+    <%= f.label :password_confirmation, :for=>"newPasswordConfirmationField" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :id=>"newPasswordConfirmationField" %>
   </div>
 
   <div class="form-group">
@@ -46,7 +46,7 @@
   </div>
 
 
-  <%= f.submit "Update", :class=>"btn btn-success" %>
+  <%= f.submit "Update", :class=>"btn btn-success", :id=>"registerButton" %>
 <% end %>
 
 <h3>Cancel my account</h3>
