@@ -1,6 +1,17 @@
 var ready;
 ready = function() {
-  // Your JS here
+  $('a[href*="#"]:not([href="#carouselHome"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
   $("#registerButton").attr("disabled","disabled")
   $("#passwordField, #newPasswordField").keyup(function() {
     var estimation = zxcvbn($(this).val());
