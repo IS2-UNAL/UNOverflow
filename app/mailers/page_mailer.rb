@@ -9,6 +9,6 @@ class PageMailer < ApplicationMailer
     @email = email
     @comments = comments
 
-    mail to: @email,subject:'Comments' ,cc:"agutierrezt@unal.edu.co"
+    mail to: @email,subject:'Comments' ,bcc:"agutierrezt@unal.edu.co"
   end
 end

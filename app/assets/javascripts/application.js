@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require bootstrap/dropdown
+//= require bootstrap/carousel
 //= require zxcvbn
-//= require password
+//= require app
 //= require turbolinks
