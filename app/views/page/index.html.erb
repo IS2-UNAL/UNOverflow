@@ -1,2 +1,97 @@
-<h1>Page#index</h1>
-<p>Find me in app/views/page/index.html.erb</p>
+<% content_for :top_content do %>
+  <div class="carousel slide" data-ride="carousel" id="carouselHome">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselHome" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselHome" data-slide-to="1"></li>
+      <li data-target="#carouselHome" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="http://3.bp.blogspot.com/-se7uQ7jHwJ4/Vn66YctFKSI/AAAAAAAAaZ8/SjG4-Tm0cF0/s1600/nuevo-edificio-facultad-enfermeria-unal-cub-unb.jpg" alt="">
+        <div class="container">
+          <div class="carousel-caption">
+            <p>Busque preguntas por una infinidad de infiltros como los son tags, fecha, tendencia de preguntas entre otros</p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="https://c2.staticflickr.com/8/7545/15796958558_b47956ffb8_b.jpg" alt="">
+        <div class="container">
+          <div class="carousel-caption">
+            <p>Ayude a resolver preguntas y a crear una comunidad</p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="http://www.arquitectosbogota.co/images/gallery/edificio-ciencia-y-tecnologia-universidad-nacional-de-colombia4.jpg" alt="">
+        <div class="container">
+          <div class="carousel-caption">
+            <p>Pregunte y encuetre respuestas a los problemas que lo agobian</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <a href="#carouselHome" class="left carousel-control" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a href="#carouselHome" class="right carousel-control" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+
+  </div>
+<% end %>
+
+<hr class="divider">
+<div class="row" id="about">
+  <div class="col-xs-12">
+    <h1 class="pull-left">About us</h1>
+  </div>
+
+  <div class="col-xs-12 col-lg-6 col-sm-6">
+    <h3 class="aboutUS">Andres Gutierrez</h3>
+    <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="aboutUS img-circle center-block" alt="" width="150" height="150">
+    <p class="center-block aboutUS">
+      This is a description about me dsf dasf asdf asdf asdf df asdf asdf asf asdf asdf asdf
+    </p>
+    <div class="row">
+      <div class="col-xs-12 aboutUS">
+        <a href="https://www.facebook.com/andres.rene.3"><img src="http://smr.org/img/facebook_en.png" alt="" width="150" height="30" class="center-block"></a>
+      </div>
+      <div class="col-xs-12 aboutUS">
+        <a href="https://twitter.com/agutierrezt9410"><img src="http://capitalregionfarmersmarket.com.au/wp-content/uploads/2014/02/twitter-follow.gif" alt="" width="150" height="30" class="center-block"></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-lg-6 col-sm-6">
+    <h3 class="aboutUS">Alejandro Arias</h3>
+    <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="" class="aboutUS img-circle center-block" width="150" height="150">
+    <p class="center-block aboutUS">
+      This is a description Alejandro dsfasdf asdf asdf afds
+    </p>
+    <div class="row">
+      <div class="col-xs-12 aboutUS">
+        <a href="https://www.facebook.com/andres.rene.3"><img src="http://smr.org/img/facebook_en.png" class="center-block" alt="" width="150" height="30"></a>
+      </div>
+      <div class="col-xs-12 aboutUS">
+        <a href="https://twitter.com/agutierrezt9410"><img src="http://capitalregionfarmersmarket.com.au/wp-content/uploads/2014/02/twitter-follow.gif" alt="" class="center-block" width="150" height="30"></a>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+<div class="row" id="contact">
+
+  <form controller="page" action="contactUS" class="form-signin" method="post" >
+    <h1>Contact us</h1>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label for="emailField" class="sr-only">Email</label>
+    <input type="email" id="emailField", name="email" class="form-control" placeholder="Enter your email" required="true" >
+    <label for="commentField" class="sr-only">Comment</label>
+    <textarea class="form-control" name="comment" rows="6" id="commentField" required="true" placeholder="Enter your comment"></textarea>
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Send your comment</button>
+  </form>
+  <br/>
+  <br/>
+
+</div>
