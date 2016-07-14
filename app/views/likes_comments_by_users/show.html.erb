@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Is possitive:</strong>
+  <%= @likes_comments_by_user.is_possitive %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @likes_comments_by_user.user %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @likes_comments_by_user.comment %>
+</p>
+
+<%= link_to 'Edit', edit_likes_comments_by_user_path(@likes_comments_by_user) %> |
+<%= link_to 'Back', likes_comments_by_users_path %>

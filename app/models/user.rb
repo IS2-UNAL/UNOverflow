@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  mount_uploader :avatar, ImageUploader
+  has_many :comments
+  has_many :post
+  has_many :likes_comments_by_users
+  has_many :comments, through: :likes_comments_by_users
   enum role:{
     "User"  => 0,
     "Admin" => 1

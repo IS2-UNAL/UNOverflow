@@ -6,6 +6,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
@@ -34,7 +36,7 @@
           </div>
           <div class="modal-body">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="form-group">
+              <div class="form-group input-group margin-bottom-sm">
                 <%= f.label :email, :for=>"emailField" %><br />
                 <%= f.email_field :email, autofocus: true, :class=>"form-control", :id=>"emailField" %>
               </div>
