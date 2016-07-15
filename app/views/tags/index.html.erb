@@ -1,29 +1,45 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Tags</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.title %></td>
-        <td><%= tag.description %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% if notice %>
+  <div class="alert alert-warning alert-dismissible fade-in" id="alert-app" role="alert">
+    <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+      <span>&times;</span>
+    </button>
+    <%= notice %>
+  </div>
+<% end %>
+<div class="page-header">
+  <% if user_signed_in? %>
+    <% if current_user.role == "Admin" %>
+      <%= link_to "New", new_tag_path, :class=>"btn btn-success pull-right" %>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+  <h2>Tags</h2>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="col-md-8">Title</th>
+        <th class="col-md-4">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td class="col-md-8"><h4><%= tag.title %></h4></td>
+          <td class="col-md-4">
 
+              <%= link_to 'Show', tag, :class=>"btn btn-success btn-md" %>
+              <% if user_signed_in? %>
+                <% if current_user.role == "Admin" %>
+                  <%= link_to 'Edit', edit_tag_path(tag), :class=>"btn btn-primary btn-md" %>
+                  <%= link_to 'Destroy', tag, :class=>"btn btn-danger btn-md", method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
-
-<%= link_to 'New Tag', new_tag_path %>

@@ -70,7 +70,7 @@ class TagsController < ApplicationController
     end
 
     def isAdmin
-      if current_user.role !=  User.roles[:Admin]
+      if current_user.role !=  "Admin"
         flash[:alert] = "You don't have enough permissions to access to this place"
         redirect_to root_path
       end
