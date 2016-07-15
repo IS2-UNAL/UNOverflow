@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :tags
   resources :likes_comments_by_users
   resources :images
   resources :comments
-  resources :tags
   resources :posts
   devise_for :users, :path  => '', :path_names => {:sign_in => 'loginHasAnImposibleURLBecauseWhereAreGoingToUseAModal',:sign_out=>'logout'}
   root to: 'page#index'

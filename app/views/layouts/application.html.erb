@@ -6,7 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
   </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -16,7 +16,7 @@
     <%= render 'layouts/menu' %>
     <div class="container">
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %> alert-dismissible fade-in"  role="alert">
+        <div class="alert alert-<%= key %> alert-dismissible fade-in"  id="alert-app" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -36,7 +36,7 @@
           </div>
           <div class="modal-body">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="form-group input-group margin-bottom-sm">
+              <div class="form-group">
                 <%= f.label :email, :for=>"emailField" %><br />
                 <%= f.email_field :email, autofocus: true, :class=>"form-control", :id=>"emailField" %>
               </div>

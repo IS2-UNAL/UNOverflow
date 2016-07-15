@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714053422) do
+ActiveRecord::Schema.define(version: 20160714215549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "answer"
+    t.text     "answer"
     t.integer  "post_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160714053422) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string   "image"
+    t.text     "image"
     t.integer  "comment_id"
     t.integer  "post_id"
     t.datetime "created_at", null: false
@@ -47,21 +47,19 @@ ActiveRecord::Schema.define(version: 20160714053422) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
-    t.string   "description"
-    t.boolean  "is_solved"
+    t.text     "description"
+    t.boolean  "is_solved",   default: false
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
   create_table "tags", force: :cascade do |t|
     t.string   "title"
-    t.string   "description"
-    t.integer  "post_id"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["post_id"], name: "index_tags_on_post_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,7 +85,7 @@ ActiveRecord::Schema.define(version: 20160714053422) do
     t.integer  "role"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "avatar"
+    t.text     "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -101,5 +99,4 @@ ActiveRecord::Schema.define(version: 20160714053422) do
   add_foreign_key "likes_comments_by_users", "comments"
   add_foreign_key "likes_comments_by_users", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "tags", "posts"
 end

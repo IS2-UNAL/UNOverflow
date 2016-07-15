@@ -12,6 +12,9 @@ ready = function() {
       }
     }
   });
+  $("#alert-app").fadeTo(2000,500).slideUp(500, function(){
+      $("#alert-app").alert('close');
+  });
   $("#registerButton").attr("disabled","disabled")
   $("#passwordField, #newPasswordField").keyup(function() {
     var estimation = zxcvbn($(this).val());

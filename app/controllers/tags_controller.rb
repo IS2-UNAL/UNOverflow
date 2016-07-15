@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit,:new ,:upadate,:destroy]
+  before_action :set_tag, only: [:show, :edit, :update, :destroy], :except =>[:index]
+  before_action :isAdmin, only: [:edit,:new, :upadate,:destroy]
 
   # GET /tags
   # GET /tags.json
@@ -67,8 +69,15 @@ class TagsController < ApplicationController
       @tag = Tag.find(params[:id])
     end
 
+    def isAdmin
+      if current_user.role !=  User.roles[:Admin]
+        flash[:alert] = "You don't have enough permissions to access to this place"
+        redirect_to root_path
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
-      params.require(:tag).permit(:title, :description, :post_id)
+      params.require(:tag).permit(:title, :description)
     end
 end
