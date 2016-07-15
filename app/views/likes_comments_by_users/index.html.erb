@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Likes Comments By Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Is possitive</th>
+      <th>User</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @likes_comments_by_users.each do |likes_comments_by_user| %>
+      <tr>
+        <td><%= likes_comments_by_user.is_possitive %></td>
+        <td><%= likes_comments_by_user.user %></td>
+        <td><%= likes_comments_by_user.comment %></td>
+        <td><%= link_to 'Show', likes_comments_by_user %></td>
+        <td><%= link_to 'Edit', edit_likes_comments_by_user_path(likes_comments_by_user) %></td>
+        <td><%= link_to 'Destroy', likes_comments_by_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Likes Comments By User', new_likes_comments_by_user_path %>

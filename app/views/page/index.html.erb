@@ -54,16 +54,17 @@
 
     <div class="col-xs-12 col-lg-6 col-sm-6">
       <h3 class="aboutUS">Andres Gutierrez</h3>
-      <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" class="aboutUS img-circle center-block" alt="" width="150" height="150">
+
+      <img src="<%= asset_path('thumb_IMG_0014_1024.jpg') %>" class="aboutUS img-circle center-block" alt="" width="150" height="150">
       <p class="center-block aboutUS">
-        This is a description about me dsf dasf asdf asdf asdf df asdf asdf asf asdf asdf asdf
-      </p>
+        I'm a student of computer science in the National University of Colombia. I'm in the ninth semester of it.<br> My likes and hobbies are very diverse but the most important are play football, drink coffee, have a nice talks and absolutelly the programming. I love watching the EPL, I am a big expert of it and Arsenal fan.<br>
+        I'm very interested in development and learn new things every day. At the moment I'm focus in iOS development and the new programming language swift also I am interested in design patterns, software quality and the discovery of new tools to develop software in a better and agile way.
       <div class="row">
-        <div class="col-xs-12 aboutUS">
-          <a href="https://www.facebook.com/andres.rene.3"><img src="http://smr.org/img/facebook_en.png" alt="" width="150" height="30" class="center-block"></a>
+        <div class="col-xs-5 col-xs-offset-2 col-sm-2 col-sm-offset-4 aboutUS">
+          <a href="https://www.facebook.com/andres.rene.3"  target="_blank"><i class="fa fa-facebook fa-4x"  aria-hiden="true"></i></a>
         </div>
-        <div class="col-xs-12 aboutUS">
-          <a href="https://twitter.com/agutierrezt9410"><img src="http://capitalregionfarmersmarket.com.au/wp-content/uploads/2014/02/twitter-follow.gif" alt="" width="150" height="30" class="center-block"></a>
+        <div class="col-xs-5 col-sm-2 aboutUS">
+          <a href="https://twitter.com/agutierrezt9410" target="_blank"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -71,14 +72,14 @@
       <h3 class="aboutUS">Alejandro Arias</h3>
       <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="" class="aboutUS img-circle center-block" width="150" height="150">
       <p class="center-block aboutUS">
-        This is a description Alejandro dsfasdf asdf asdf afds
+        This is a description about Alejandro
       </p>
       <div class="row">
-        <div class="col-xs-12 aboutUS">
-          <a href="https://www.facebook.com/andres.rene.3"><img src="http://smr.org/img/facebook_en.png" class="center-block" alt="" width="150" height="30"></a>
+        <div class="col-xs-5 col-xs-offset-2 col-sm-2 col-sm-offset-4  aboutUS">
+          <a href="https://www.facebook.com/andres.rene.3" target="_blank"><i class="fa fa-facebook fa-4x" aria-hiden="true"></i></a>
         </div>
-        <div class="col-xs-12 aboutUS">
-          <a href="https://twitter.com/agutierrezt9410"><img src="http://capitalregionfarmersmarket.com.au/wp-content/uploads/2014/02/twitter-follow.gif" alt="" class="center-block" width="150" height="30"></a>
+        <div class="col-xs-5 col-sm-2 aboutUS">
+          <a href="https://twitter.com/agutierrezt9410" target="_blank"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
@@ -93,9 +94,22 @@
       <h1>Contact us</h1>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <label for="emailField" class="sr-only">Email</label>
-      <input type="email" id="emailField", name="email" class="form-control" placeholder="Enter your email" required="true" >
+      <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+        <input type="email" id="emailField", name="email" class="form-control" placeholder="Enter your email" required="true" >
+      </div>
+      <label for="nameField" class="sr-only">Name</label>
+      <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+        <input type="text" id="nameField" name="name" class="form-control" placeholder="Enter your name" required="true">
+
+      </div>
       <label for="commentField" class="sr-only">Comment</label>
-      <textarea class="form-control" name="comment" rows="6" id="commentField" required="true" placeholder="Enter your comment"></textarea>
+      <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-commenting-o fa-fw"></i></span>
+        <textarea class="form-control" name="comment" rows="6" id="commentField" required="true" placeholder="Enter your comment"></textarea>
+
+      </div>
       <button type="submit" class="btn btn-lg btn-primary btn-block">Send your comment</button>
     </form>
     <br/>

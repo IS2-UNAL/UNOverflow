@@ -3,9 +3,9 @@
   <%= render "devise/shared/links" %>
 </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, html: { multipart: true },   url: registration_path(resource_name)) do |f| %>
   <% if devise_error_messages! != "" %>
-    <div class="alert alert-danger alert-dismissible fade-in" role="alert">
+    <div class="alert alert-danger alert-dismissible fade-in" id="alert-app" role="alert">
       <button type="button" class="close" aria-label="Close" data-dismiss="alert">
         <span>&times;</span>
       </button>
@@ -37,8 +37,12 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, :for=>"newPasswordConfirmationField" %><br />
+    <%= f.label :password_confirmation, :for=>"passwordConfirmationField" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"form-control", :id=>"passwordConfirmationField" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :avatar, :for=>"avatarField" %>
+    <%= f.file_field :avatar,  :id=>"avatarField" %>
   </div>
   <div class="row">
     <div class="col-xs-6">

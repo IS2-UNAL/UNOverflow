@@ -10,10 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706184745) do
+ActiveRecord::Schema.define(version: 20160714215549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "answer"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text     "image"
+    t.integer  "comment_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_images_on_comment_id", using: :btree
+    t.index ["post_id"], name: "index_images_on_post_id", using: :btree
+  end
+
+  create_table "likes_comments_by_users", force: :cascade do |t|
+    t.boolean  "is_possitive"
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["comment_id"], name: "index_likes_comments_by_users_on_comment_id", using: :btree
+    t.index ["user_id"], name: "index_likes_comments_by_users_on_user_id", using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "is_solved",   default: false
+    t.integer  "user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -38,10 +85,18 @@ ActiveRecord::Schema.define(version: 20160706184745) do
     t.integer  "role"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.text     "avatar"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "images", "comments"
+  add_foreign_key "images", "posts"
+  add_foreign_key "likes_comments_by_users", "comments"
+  add_foreign_key "likes_comments_by_users", "users"
+  add_foreign_key "posts", "users"
 end
