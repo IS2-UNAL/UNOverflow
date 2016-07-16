@@ -26,6 +26,7 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'will_paginate-bootstrap'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

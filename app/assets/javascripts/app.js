@@ -12,8 +12,23 @@ ready = function() {
       }
     }
   });
+  $('#search').keyup(function(){
+    $('#tags_search').submit();
+  });
   $("#alert-app").fadeTo(2000,500).slideUp(500, function(){
       $("#alert-app").alert('close');
+  });
+  $("#titleOrder").click(function(){
+      var value = $("#carretOrder").text();
+      if(value == String.fromCharCode(9660)){
+        $("#carretOrder").text(String.fromCharCode(9650));
+        $("#order").val("DESC");
+      }else {
+        $("#carretOrder").text(String.fromCharCode(9660));
+        $("#order").val("ASC");
+      }
+      $('#tags_search').submit();
+
   });
   $("#registerButton").attr("disabled","disabled")
   $("#passwordField, #newPasswordField").keyup(function() {
