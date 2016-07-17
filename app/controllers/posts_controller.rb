@@ -4,7 +4,30 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.paginate(:page => params[:page],:per_page => 10).order('title ASC')
+    @index = "all"
+  end
+
+  def myPosts
+    @post = Post.all
+  end
+
+  def lastDay
+    @posts = Post.where("updated_at >= ? ", 1.days.ago).paginate(:page => params[:page],:per_page =>10).order('title ASC')
+    @lastDay = "lastDay"
+    render "index"
+  end
+
+  def lastWeek
+    @posts = Post.where("updated_at >= ? ", 1.week.ago).paginate(:page => params[:page],:per_page =>10).order('title ASC')
+    @lastWeek = "lastWeek"
+    render "index"
+  end
+
+  def lastMonth
+    @posts = Post.where("updated_at >= ?", 1.month.ago).paginate(:page => params[:page],:per_page => 10).order('title ASC')
+    @lastMoth = "lastMonth"
+    render "index"
   end
 
   # GET /posts/1

@@ -6,11 +6,16 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.where('title LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 2).order("title #{params[:order]}")
+    @tags = Tag.where('title LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10).order("title #{params[:order]}")
 
     @order = params[:order]
     @order ||= "ASC"
 
+  end
+
+  def questionsByTag
+    @tag = Tag.where('id = ?',params[:id]).first()
+    @posts = @tag.posts
   end
 
   # GET /tags/1

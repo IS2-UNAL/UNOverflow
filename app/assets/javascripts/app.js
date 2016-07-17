@@ -18,6 +18,30 @@ ready = function() {
   $("#alert-app").fadeTo(2000,500).slideUp(500, function(){
       $("#alert-app").alert('close');
   });
+  $("#tab-first").click(function(){
+    $("#tab-second").removeClass("active")
+    $("#tab-third").removeClass("active")
+    $("#tab-fourth").removeClass("active")
+    $("#tab-first").addClass("active")
+  });
+  $("#tab-second").click(function(){
+    $("#tab-second").addClass("active")
+    $("#tab-third").removeClass("active")
+    $("#tab-fourth").removeClass("active")
+    $("#tab-first").removeClass("active")
+  });
+  $("#tab-third").click(function(){
+    $("#tab-second").removeClass("active")
+    $("#tab-third").addClass("active")
+    $("#tab-fourth").removeClass("active")
+    $("#tab-first").removeClass("active")
+  });
+  $("#tab-fourth").click(function(){
+    $("#tab-second").removeClass("active")
+    $("#tab-third").removeClass("active")
+    $("#tab-fourth").addClass("active")
+    $("#tab-first").removeClass("active")
+  });
   $("#titleOrder").click(function(){
       var value = $("#carretOrder").text();
       if(value == String.fromCharCode(9660)){

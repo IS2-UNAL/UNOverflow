@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= f.label :description, :for=>"descriptionField" %>
-    <%= f.text_field :description, :class=>"form-control", :id=>"descriptionField" %>
+    <%= f.text_area :description, :class=>"form-control",  rows: "10",  :id=>"descriptionField" %>
   </div>
 
   <%= f.submit "Add", :class=>"btn btn-success" %>

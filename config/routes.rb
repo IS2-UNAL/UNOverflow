@@ -1,9 +1,22 @@
 Rails.application.routes.draw do
-  resources :tags
+  resources :tags do
+    member do
+      get 'questionsByTag', to: :questionsByTag
+    end
+  end
   resources :likes_comments_by_users
   resources :images
   resources :comments
-  resources :posts
+  resources :posts do
+    collection do
+      get 'myPosts', to: :myPosts
+      get 'lastDay', to: :lastDay
+      get 'lastWeek', to: :lastWeek
+      get 'lastMonth', to: :lastMonth
+    end
+
+
+  end
   devise_for :users, :path  => '', :path_names => {:sign_in => 'loginHasAnImposibleURLBecauseWhereAreGoingToUseAModal',:sign_out=>'logout'}
   root to: 'page#index'
   #get "/contactUS" =>  :contactUS as: 'contact'

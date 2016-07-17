@@ -1,33 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Is solved</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%= post.is_solved %></td>
-        <td><%= post.user %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="page-header">
+  <% if user_signed_in? %>
+      <%= link_to "New",new_post_path, :class=>"btn btn-success pull-right" %>
+  <% end %>
+  <h2>Post</h2>
+</div>
+<ul class="nav nav-tabs">
+  <% if @index %>
+    <li role="presentation" id="tab-first" class="active"><%= link_to "All questions", posts_path,  remote: true %></li>
+  <% else %>
+    <li role="presentation" id="tab-first"><%= link_to "All questions", posts_path,  remote: true %></li>
+  <% end %>
+  <% if @lastDay %>
+    <li role="presentation" id="tab-second" class="active"><%= link_to "Last questions", lastDay_posts_path,  remote: true %></li>
+  <% else %>
+    <li role="presentation" id="tab-second"><%= link_to "Last questions", lastDay_posts_path,  remote: true %></li>
+  <% end %>
+  <% if @lastWeek %>
+    <li role="presentation" id="tab-third" class="active"><%= link_to "Week", lastWeek_posts_path,  remote: true	%></li>
+  <% else %>
+    <li role="presentation" id="tab-third"><%= link_to "Week", lastWeek_posts_path,  remote: true	%></li>
+  <% end %>
+  <% if @lastMonth %>
+    <li role="presentation" id="tab-fourth" class="active"><%= link_to "Month", lastMonth_posts_path,  remote: true %></li>
+  <% else %>
+    <li role="presentation" id="tab-fourth"><%= link_to "Month", lastMonth_posts_path,  remote: true %></li>
+  <% end %>
+</ul>
 <br>
-
-<%= link_to 'New Post', new_post_path %>
+<br>
+<div id="posts">
+  <%= render 'posts' %>
+</div>
+<div id="paginate">
+  <%= render 'paginate' %>
+</div>
+<br>
