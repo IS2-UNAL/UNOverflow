@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   resources :comments
   resources :posts do
     collection do
+      post 'addImage', to: :addImage
       get 'myPosts', to: :myPosts
       get 'lastDay', to: :lastDay
       get 'lastWeek', to: :lastWeek
       get 'lastMonth', to: :lastMonth
+      get 'suggest', to: :suggest
     end
 
 

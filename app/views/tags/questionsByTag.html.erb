@@ -1,4 +1,9 @@
 <div class="page-header">
   <h3>Questions with the tag <span class="label label-default"><%= @tag.title %></span></h3>
 </div>
-<%= render 'posts/posts' %>
+<div id="tagPost">
+  <%= render 'posts/posts' %>
+</div>
+<div id="tagPaginate">
+  <%= render 'posts/paginate' %>
+</div>

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit,:new ,:upadate,:destroy,:create,:myPosts,:addImage]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -9,7 +10,23 @@ class PostsController < ApplicationController
   end
 
   def myPosts
-    @post = Post.all
+    @posts = Post.where("user_id = ? ",current_user.id).paginate(:page => params[:page], :per_page => 10).order('title ASC')
+  end
+
+  def addImage
+    if request.xhr?
+      @post = Post.find(params[:postID])
+      @image = Image.new(image:params[:file])
+      @post.images<<@image
+      if @image.save!
+        @post.save!
+        render json: @post.id
+      end
+    else
+      redirect_to root_path
+    end
+
+
   end
 
   def lastDay
@@ -30,6 +47,15 @@ class PostsController < ApplicationController
     render "index"
   end
 
+  def suggest
+    @tags = Tag.where('title LIKE ?', "#{params[:titleTag]}%")
+    if request.xhr?
+
+    else
+      redirect_to root_path
+    end
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -37,6 +63,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    @tags = Array.new
     @post = Post.new
   end
 
@@ -47,13 +74,20 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    value = params[:tagsValues]
+    values = value.split(",")
     @post = Post.new(post_params)
-
+    @post.user_id =  current_user.id
+    values.each do |a|
+      tag = Tag.where("title = ?",a).first();
+      @post.tags << tag
+    end
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
+        @tags = Array.new
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -63,7 +97,13 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    imagesDelete = Image.where(id:params[:image_ids])
+    imagesDelete.each do |a|
+      @post.images.delete(a)
+      a.destroy
+    end
     respond_to do |format|
+
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }

@@ -15,8 +15,10 @@
 //= require jquery-ui/effect-blind
 //= require jquery_ujs
 //= require jquery.turbolinks
+//= require dropzone
 //= require bootstrap/dropdown
 //= require bootstrap/carousel
+//= require tinymce
 //= require zxcvbn
 //= require app
 //= require turbolinks

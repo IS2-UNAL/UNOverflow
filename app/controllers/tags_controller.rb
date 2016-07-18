@@ -1,21 +1,19 @@
 class TagsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit,:new ,:upadate,:destroy]
-  before_action :set_tag, only: [:show, :edit, :update, :destroy], :except =>[:index]
+  before_action :authenticate_user!, only: [:edit,:new ,:upadate,:destroy,:create]
+  before_action :set_tag, only: [:show, :edit, :update, :destroy, :questionsByTag], :except =>[:index]
   before_action :isAdmin, only: [:edit,:new, :upadate,:destroy]
 
   # GET /tags
   # GET /tags.json
   def index
     @tags = Tag.where('title LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10).order("title #{params[:order]}")
-
     @order = params[:order]
     @order ||= "ASC"
 
   end
 
   def questionsByTag
-    @tag = Tag.where('id = ?',params[:id]).first()
-    @posts = @tag.posts
+    @posts = @tag.posts.paginate(:page => params[:page], :per_page => 10).order("title ASC")
   end
 
   # GET /tags/1

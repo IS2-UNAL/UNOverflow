@@ -1,0 +1,34 @@
+<% if !@post.images.empty? %>
+  <% @post.images.each do |image| %>
+    <div class="col-xs-12 col-sm-6 col-lg-4">
+
+      <img src="<%= image.image.url %>" id="pop" class="img-thumbnail" width="100" height="100">
+
+    </div>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? %>
+  <% if @post.user ==  current_user %>
+    <% if @post.images.length < 5 %>
+      <div class="col-xs-12">
+        <a href="" data-toggle="modal" data-target="#modalDropzone" data-keyboard="true" class="btn btn-success">Add Images</a>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="modal fade in" id="imageModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="" id="imagePreview" style="width: 100%; height: 100%;">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

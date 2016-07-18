@@ -23,16 +23,17 @@
     <%= f.label :description, :for=>"descriptionField" %>
     <%= f.text_area :description, rows: "10", :id=>"descriptionField", :class=>"form-control postDescription" %>
   </div>
-  <div class="form-group">
-    <label for="tagField">Tags</label>
-    <input type="text", name="tags", id="tagField" class="form-control", required="true", autocomplete="off">
-    <input type="hidden" name="tagsValues" id="tagsValues" value="" required="true">
-    <div id="tagSuggest">
-      <%= render 'tagSuggest' %>
-    </div>
+  <% if !post.images.empty? %>
+    <% post.images.each do |image| %>
+      <div class="col-xs-12 col-sm-6 col-lg-4">
+        <img src="<%= image.image.url %>" class="img-thumbnail" alt="Cinque Terre" width="100" height="100">
+        <%= check_box_tag 'image_ids[]', image.id %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="col-xs-12">
+    <%= f.submit "Update", :class=>"btn btn-success"%>
   </div>
-
-  <%= f.submit "Add", :class=>"btn btn-success"%>
 <% end %>
 <script type="text/javascript">
   tinyMCE.init({
