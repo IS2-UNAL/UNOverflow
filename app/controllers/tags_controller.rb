@@ -6,10 +6,11 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.where('title LIKE ?', "%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10).order("title #{params[:order]}")
+    search = params[:search]
+    search ||= ""
+    @tags = Tag.where('title LIKE ?', "%#{search.strip}%").paginate(:page => params[:page], :per_page => 10).order("title #{params[:order]}")
     @order = params[:order]
     @order ||= "ASC"
-
   end
 
   def questionsByTag
@@ -64,8 +65,13 @@ class TagsController < ApplicationController
   # DELETE /tags/1.json
   def destroy
     @tag.destroy
+    if @tag.errors.any?
+      flash[:alert] = "We can't destroy this tag because it has some posts"
+    else
+      flash[:notice] = "Tag was successfully destroyed."
+    end
     respond_to do |format|
-      format.html { redirect_to tags_url, notice: 'Tag was successfully destroyed.' }
+      format.html { redirect_to tags_url}
       format.json { head :no_content }
     end
   end

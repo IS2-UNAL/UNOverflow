@@ -1,8 +1,8 @@
 <h1>Editing Post</h1>
-
 <%= render 'formEdit', post: @post %>
-<br>  
+<br>
 <div class="col-xs-12">
   <%= link_to 'Show', @post, :class=>"btn btn-success" %>
+  <%= link_to 'Destroy', @post, :class=>"btn btn-danger btn-md", method: :delete, data: { confirm: 'Are you sure?' } %>
   <%= link_to 'Back', posts_path , :class=>"btn btn-default"%>
 </div>

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:edit,:new ,:upadate,:destroy,:create,:myPosts,:addImage]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only:[:edit,:destroy,:update]
 
   # GET /posts
   # GET /posts.json
@@ -44,6 +45,26 @@ class PostsController < ApplicationController
   def lastMonth
     @posts = Post.where("updated_at >= ?", 1.month.ago).paginate(:page => params[:page],:per_page => 10).order('title ASC')
     @lastMoth = "lastMonth"
+    render "index"
+  end
+
+  def search
+    type = ""
+    case params[:type]
+      when "all"
+        type = ""
+      when "lastDay"
+        type = 1.days.ago
+      when "lastWeek"
+        type = 1.week.ago
+      when "lastMonth"
+        type = 1.month.ago
+    end
+    if type == ""
+      @posts = Post.all.where("title LIKE ?", "%#{params[:searchPost].strip}%").paginate(:page => params[:page],:per_page => 10).order('title ASC')
+    else
+      @posts = Post.where("updated_at >= ? AND title LIKE ?", type,"%#{params[:searchPost].strip}%").paginate(:page => params[:page],:per_page =>10).order('title ASC')
+    end
     render "index"
   end
 
@@ -126,6 +147,11 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def check_user
+        if !(@post.user ==  current_user)
+          redirect_to root_path
+        end
+    end
     def set_post
       @post = Post.find(params[:id])
     end

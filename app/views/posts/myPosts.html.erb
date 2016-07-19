@@ -4,6 +4,11 @@
   <% end %>
   <h2>My Posts</h2>
 </div>
+<%= form_tag search_posts_path, :method=>"get", :id=>"post_search", remote: true  do %>
+  <div class="form-group">
+    <%= text_field_tag :searchPost, nil, class:"form-control", placeholder: 'Enter the name of the post'%>
+  </div>
+<% end %>
 <div id="posts">
   <%= render 'posts' %>
 </div>

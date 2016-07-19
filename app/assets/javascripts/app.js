@@ -32,19 +32,20 @@ $(function(){
   });
 
 });
-$('a[href*="#"]:not([href="#carouselHome"])').click(function() {
-  if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-    var target = $(this.hash);
-    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-    if (target.length) {
-      $('html, body').animate({
-        scrollTop: target.offset().top
-      }, 1000);
-      return false;
-    }
-  }
-});
+
 ready = function() {
+  $('a[href*="#"]:not([href="#carouselHome"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
   $(document).on("click","#pop", function(event){
     $('#imagePreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link
     $('#imageModal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
@@ -68,28 +69,39 @@ ready = function() {
   $('#search').keyup(function(){
     $('#tags_search').submit();
   });
+  $('#searchPost').keyup(function(){
+    $('#post_search').submit();
+  });
   $("#alert-app").fadeTo(2000,500).slideUp(500, function(){
       $("#alert-app").alert('close');
   });
   $("#tab-first").click(function(){
+    $('#searchPost').val("");
+    $('#type').val("all");
     $("#tab-second").removeClass("active")
     $("#tab-third").removeClass("active")
     $("#tab-fourth").removeClass("active")
     $("#tab-first").addClass("active")
   });
   $("#tab-second").click(function(){
+    $('#searchPost').val("");
+    $('#type').val("lastDay");
     $("#tab-second").addClass("active")
     $("#tab-third").removeClass("active")
     $("#tab-fourth").removeClass("active")
     $("#tab-first").removeClass("active")
   });
   $("#tab-third").click(function(){
+    $('#searchPost').val("");
+    $('#type').val("lastWeek");
     $("#tab-second").removeClass("active")
     $("#tab-third").addClass("active")
     $("#tab-fourth").removeClass("active")
     $("#tab-first").removeClass("active")
   });
   $("#tab-fourth").click(function(){
+    $('#searchPost').val("");
+    $('#type').val("lastMonth");
     $("#tab-second").removeClass("active")
     $("#tab-third").removeClass("active")
     $("#tab-fourth").addClass("active")

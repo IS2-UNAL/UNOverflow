@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'lastWeek', to: :lastWeek
       get 'lastMonth', to: :lastMonth
       get 'suggest', to: :suggest
+      get 'search', to: :search
     end
 
 
