@@ -10,23 +10,59 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
-
+ *= require dropzone/dropzone
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap/theme";
 @import "font-awesome";
 @import "page";
+@import "posts";
 
-
-body{
-  margin-top: 52px;
-
+html {
+  height: 100%;
+  box-sizing: border-box;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body{
+  position: relative;
+  margin-top: 52px;
+  padding-bottom: 6rem;
+  min-height: 100%;
+
+}
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #222;
+  color: #9d9d9d;
+}
+
+.label a{
+  color:white;
+}
+.label a:hover{
+  text-decoration:none;
+}
 .alert-alert {
   @extend .alert-warning;
 }
 .alert-notice {
   @extend .alert-info;
+}
+
+.dropzone {
+  background: #f4f4f4 !important;
+  border: none !important;
+  font-size: 2.5rem;
+  font-weight: 700;
 }

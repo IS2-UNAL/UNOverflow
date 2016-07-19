@@ -1,6 +1,14 @@
-<h1>Editing Tag</h1>
-
+<div class="page-header">
+  <h1>Editing Tag</h1>
+</div>
 <%= render 'form', tag: @tag %>
+<div class="row">
+  <div class="col-xs-12 col-md-1 col-lg-1">
+    <%= link_to 'Show', @tag, :class=>"btn btn-primary"%>
+  </div>
+  <div class="col-xs-12 col-md-1 col-lg-1">
+    <%= link_to 'Back', tags_path, :class=>"btn btn-default"%>
 
-<%= link_to 'Show', @tag %> |
-<%= link_to 'Back', tags_path %>
+  </div>
+
+</div>
