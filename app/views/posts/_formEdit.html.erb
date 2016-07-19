@@ -1,3 +1,4 @@
+<%= tinymce_assets %>
 <%= form_for(post) do |f| %>
   <% if post.errors.any? %>
     <div class="alert alert-danger alert-dismissible fade-in" id="alet-app" role="alert">
@@ -21,7 +22,7 @@
 
   <div class="form-group">
     <%= f.label :description, :for=>"descriptionField" %>
-    <%= f.text_area :description, rows: "10", :id=>"descriptionField", :class=>"form-control postDescription" %>
+    <%= f.text_area :description, rows: "10", :id=>"descriptionField", :class=>"form-control tinymce" %>
   </div>
   <% if !post.images.empty? %>
     <% post.images.each do |image| %>
@@ -42,20 +43,4 @@
   </div>
 <% end %>
 <br>
-
-
-<script type="text/javascript">
-  tinyMCE.init({
-    selector: '.postDescription',
-    theme: 'modern',
-    height: 450,
-    plugins: [
-      'advlist autolink link image lists charmap  preview hr anchor pagebreak spellchecker',
-      'searchreplace wordcount visualblocks visualchars  fullscreen insertdatetime media nonbreaking',
-      'save table contextmenu directionality emoticons template paste textcolor codesample'
-    ],
-    menubar: false,
-    statusbar: false,
-    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image |  preview media fullpage | forecolor backcolor emoticons codesample'
-  });
-</script>
+<%= tinymce %>
