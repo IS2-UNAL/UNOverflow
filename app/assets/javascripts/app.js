@@ -1,4 +1,38 @@
 var ready;
+Dropzone.autoDiscover = false;
+$(function(){
+  var mediaDropzone = new Dropzone("#media-dropzone");
+  Dropzone.options.mediaDropzone = {
+    success: function (response) {
+                eval(response.xhr.response);
+            }
+  };
+  mediaDropzone.options.acceptedFiles = ".jpeg,.jpg,.png,.gif";
+  mediaDropzone.options.maxFiles = 1;
+  mediaDropzone.options.parallelUploads = 1;
+  mediaDropzone.on("maxfilesexceeded", function(file) {
+        mediaDropzone.removeAllFiles();
+        mediaDropzone.addFile(file);
+  });
+  mediaDropzone.on("complete", function(file) {
+    var response = JSON.parse(file.xhr.response);
+    var _this = this;
+    if (_this.getUploadingFiles().length === 0 && _this.getQueuedFiles().length === 0) {
+      setTimeout(function(){
+        var rejectedFiles = _this.getRejectedFiles();
+        if (rejectedFiles.length != 0) {
+          alert("This files is not accepted")
+        }
+        $("#modalDropzone").modal('hide')
+        mediaDropzone.removeFile(file)
+        window.location.href = ("/posts/"+response)
+      },2000);
+    }
+
+  });
+
+});
+
 ready = function() {
   $('a[href*="#"]:not([href="#carouselHome"])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -111,11 +145,12 @@ ready = function() {
       }
       //console.log(mySet);
       newValues = "";
-      for (let item of mySet){
-        //console.log(item);
+
+      mySet.forEach(function(item){
         $("#tagField").after("<h4><span class='label label-default' id='tagLabels'>"+ item  +"</span></h4>");
         newValues = newValues.concat(item + ",");
-      }
+      });
+
 
       $("#tagsValues").val(newValues);
       //console.log(newValues);
