@@ -4,7 +4,14 @@
 </div>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <% if devise_error_messages! != "" %>
+    <div class="alert alert-danger alert-dismissible fade-in" id="alert-app" role="alert">
+      <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
+      <%= devise_error_messages! %>
+    </div>
+  <% end %>
 
   <div class="form-group">
     <%= f.label :email, :for=>"emailField" %><br />

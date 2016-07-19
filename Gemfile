@@ -22,6 +22,14 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'jquery-ui-rails'
 gem 'devise'
 gem 'devise_zxcvbn'
+gem 'font-awesome-rails'
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
+gem 'will_paginate-bootstrap'
+gem 'dropzonejs-rails'
+gem 'tinymce-rails'
+
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

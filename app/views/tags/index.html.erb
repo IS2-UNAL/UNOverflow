@@ -1,0 +1,54 @@
+<!--<% if notice %>
+  <div class="alert alert-warning alert-dismissible fade-in" id="alert-app" role="alert">
+    <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+      <span>&times;</span>
+    </button>
+    <%= notice %>
+  </div>
+<% end %> -->
+<div class="page-header">
+  <% if user_signed_in? %>
+    <% if current_user.role == "Admin" %>
+      <%= link_to "New", new_tag_path, :class=>"btn btn-success pull-right" %>
+    <% end %>
+  <% end %>
+  <h2>Tags</h2>
+</div>
+<%= form_tag tags_path, :method => 'get', :id => "tags_search", remote: true do %>
+  <div class="form-group">
+    <% if @order == 'ASC' %>
+      <%= hidden_field_tag 'order', 'ASC' %>
+    <% else %>
+      <%= hidden_field_tag 'order', 'DESC' %>
+    <% end %>
+    <%= text_field_tag :search, nil, class:"form-control", placeholder: 'Enter the name of the tag'%>
+  </div>
+<% end %>
+<% if !@tags.empty? %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="col-md-8" id="titleOrder">
+            Title
+            <% if @order == 'ASC' %>
+              <span id="carretOrder">&#9660;</span>
+            <% else %>
+              <span id="carretOrder">&#9650;</span>
+            <% end %>
+
+          </th>
+          <th class="col-md-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tags">
+        <%= render 'tags' %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div id="paginate">
+  <%= render 'paginate' %>
+</div>
+
+<br>

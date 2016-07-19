@@ -3,7 +3,6 @@
   <head>
     <title>UnOverflow</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +13,7 @@
     <%= render 'layouts/menu' %>
     <div class="container">
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %> alert-dismissible fade-in"  role="alert">
+        <div class="alert alert-<%= key %> alert-dismissible fade-in"  id="alert-app" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -25,6 +24,28 @@
     <%= yield :top_content %>
     <div class="container">
       <%= yield %>
+      <br>
+      <br>
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-8 col-sm-9 col-lg-10">
+              <p class=>&copy; Unal Andres & Alejandro</p>
+            </div>
+            <div class="col-xs-4 col-sm-3 col-lg-2">
+              <div class="row">
+                <div class="col-xs-6 col-sm-4 col-lg-4">
+                  <img class="img-responsive img-rounded" width="40", height="40" src=<%=asset_path "colombia.png" %> />
+                </div>
+                <div class="col-xs-6 col-sm-4 col-lg-4">
+                  <img class="img-responsive img-rounded" width="40", height="40" src=<%=asset_path "unitedKingdom.png" %> />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
     <div class="modal fade in" id="modalLogin">
       <div class="modal-dialog">
