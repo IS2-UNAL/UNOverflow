@@ -1,29 +1,29 @@
 <div class="page-header">
   <% if user_signed_in? %>
-      <%= link_to "New",new_post_path, :class=>"btn btn-success pull-right" %>
+      <%= link_to t('.new_button') ,new_post_path, :class=>"btn btn-success pull-right" %>
   <% end %>
   <h2>Post</h2>
 </div>
 <ul class="nav nav-tabs">
   <% if @index %>
-    <li role="presentation" id="tab-first" class="active"><%= link_to "All questions", posts_path,  remote: true %></li>
+    <li role="presentation" id="tab-first" class="active"><%= link_to t('.all_questions'), posts_path,  remote: true %></li>
   <% else %>
-    <li role="presentation" id="tab-first"><%= link_to "All questions", posts_path,  remote: true %></li>
+    <li role="presentation" id="tab-first"><%= link_to t('.all_questions'), posts_path,  remote: true %></li>
   <% end %>
   <% if @lastDay %>
-    <li role="presentation" id="tab-second" class="active"><%= link_to "Last questions", lastDay_posts_path,  remote: true %></li>
+    <li role="presentation" id="tab-second" class="active"><%= link_to t('.last_questions'), lastDay_posts_path,  remote: true %></li>
   <% else %>
-    <li role="presentation" id="tab-second"><%= link_to "Last questions", lastDay_posts_path,  remote: true %></li>
+    <li role="presentation" id="tab-second"><%= link_to t('.last_questions'), lastDay_posts_path,  remote: true %></li>
   <% end %>
   <% if @lastWeek %>
-    <li role="presentation" id="tab-third" class="active"><%= link_to "Week", lastWeek_posts_path,  remote: true	%></li>
+    <li role="presentation" id="tab-third" class="active"><%= link_to t('.week'), lastWeek_posts_path,  remote: true	%></li>
   <% else %>
-    <li role="presentation" id="tab-third"><%= link_to "Week", lastWeek_posts_path,  remote: true	%></li>
+    <li role="presentation" id="tab-third"><%= link_to t('.week'), lastWeek_posts_path,  remote: true	%></li>
   <% end %>
   <% if @lastMonth %>
-    <li role="presentation" id="tab-fourth" class="active"><%= link_to "Month", lastMonth_posts_path,  remote: true %></li>
+    <li role="presentation" id="tab-fourth" class="active"><%= link_to t('.month'), lastMonth_posts_path,  remote: true %></li>
   <% else %>
-    <li role="presentation" id="tab-fourth"><%= link_to "Month", lastMonth_posts_path,  remote: true %></li>
+    <li role="presentation" id="tab-fourth"><%= link_to t('.month'), lastMonth_posts_path,  remote: true %></li>
   <% end %>
 </ul>
 <br>
@@ -39,7 +39,7 @@
     <% else %>
       <%= hidden_field_tag :type, 'lastMonth' %>
     <% end %>
-    <%= text_field_tag :searchPost, nil, class:"form-control", placeholder: 'Enter the name of the post'%>
+    <%= text_field_tag :searchPost, nil, class:"form-control", placeholder: t('.search_post')%>
   </div>
 <% end %>
 <div class="col-xs-12 col-sm-8 col-lg-9">

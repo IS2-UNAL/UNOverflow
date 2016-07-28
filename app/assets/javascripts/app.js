@@ -72,7 +72,7 @@ ready = function() {
   $('#searchPost').keyup(function(){
     $('#post_search').submit();
   });
-  $("#alert-app").fadeTo(2000,500).slideUp(500, function(){
+  $("#alert-app").fadeTo(4000,0.7).slideUp(1000, function(){
       $("#alert-app").alert('close');
   });
   $("#tab-first").click(function(){
@@ -210,6 +210,9 @@ ready = function() {
 
 
   });
+  $(document).on("click","#logInButton", function(event){
+    $( ".logIn" ).submit();
+  });
   $("#passwordConfirmationField,#newPasswordConfirmationField").keyup(function(){
     var value = $(this).val();
     var id = "" ;
@@ -237,3 +240,14 @@ ready = function() {
 }
 
 $(document).on('turbolinks:load', ready);
+$(document).on('turbolinks:load', function () {
+   tinymce.remove();
+   tinymce.init({
+     selector:'#descriptionField',
+     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image |  preview media fullpage | forecolor backcolor emoticons codesample',
+     plugins : 'advlist template searchreplace spellchecker autolink link image lists charmap hr table textcolor codesample preview pagebreak wordcount emoticons insertdatetime',
+     statusbar: false,
+     menubar: false
+
+   });
+});

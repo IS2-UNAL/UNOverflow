@@ -1,12 +1,12 @@
-<h1>Thanks for your comments <%= @name %></h1>
+<h1> <%= t('.thanks') @name %></h1>
 <h4>
-  We are trying to improve our webpage every day and your comments are very important for us
+  <%= t('.message') %>
 </h4>
 <h4>
-  Your email
+  <%= t('.email') %>
 </h4>
 <h5>
   <%= @email %>
 </h5>
-<h4>Your comments</h4>
+<h4><%= t('.comments') %></h4>
 <h5><%= @comments %></h5>

@@ -22,7 +22,7 @@
 
   <div class="form-group">
     <%= f.label :description, :for=>"descriptionField" %>
-    <%= f.text_area :description, rows: "10", :id=>"descriptionField", :class=>"form-control tinymce" %>
+    <%= f.text_area :description, rows: "10", :id=>"descriptionField", :class=>"form-control" %>
   </div>
   <% if !post.images.empty? %>
     <% post.images.each do |image| %>
@@ -34,13 +34,12 @@
   <% end %>
   <div class="col-xs-12">
     <div class="checkbox">
-      <label><%= f.check_box :is_solved %> Is the post solved?</label>
+      <label><%= f.check_box :is_solved  %> <%= t('.is_solved')%></label>
     </div>
   </div>
 
   <div class="col-xs-12">
-    <%= f.submit "Update", :class=>"btn btn-success"%>
+    <%= f.submit t('.update'), :class=>"btn btn-success"%>
   </div>
 <% end %>
 <br>
-<%= tinymce %>

@@ -1,26 +1,26 @@
 <div class="page-header">
-  <h2>Details</h2>
+  <h2><%= t('.details')%></h2>
 </div>
 <div class="table-responsive">
   <table class="table table-striped">
     <tbody>
       <tr class="active">
-        <td class="col-md-3">Title</td>
+        <td class="col-md-3"><%= t('.title')%></td>
         <td class="col-md-9"><%= @tag.title %></td>
       </tr>
       <tr>
-        <td class="col-md-3">Description</td>
+        <td class="col-md-3"><%= t('.description') %></td>
         <td class="col-md-9"><%= @tag.description %></td>
       </tr>
       <tr class="info">
-        <td class="col-md-3">Acctions</td>
+        <td class="col-md-3"><%= t('.acctions')%></td>
         <td class="col-md-9">
           <% if user_signed_in? %>
             <% if current_user.role == "Admin" %>
-              <%= link_to 'Edit', edit_tag_path(@tag), :class=>"btn btn-success" %>
+              <%= link_to t('.edit'), edit_tag_path(@tag), :class=>"btn btn-success" %>
             <% end %>
           <% end %>
-          <%= link_to 'Back',  tags_path, :class=>"btn btn-default" %>
+          <%= link_to t('.back'),  tags_path, :class=>"btn btn-default" %>
 
         </td>
       </tr>
