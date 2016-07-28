@@ -72,7 +72,7 @@ ready = function() {
   $('#searchPost').keyup(function(){
     $('#post_search').submit();
   });
-  $("#alert-app").fadeTo(2000,500).slideUp(500, function(){
+  $("#alert-app").fadeTo(4000,0.7).slideUp(1000, function(){
       $("#alert-app").alert('close');
   });
   $("#tab-first").click(function(){
@@ -209,6 +209,9 @@ ready = function() {
     }
 
 
+  });
+  $(document).on("click","#logInButton", function(event){
+    $( ".logIn" ).submit();
   });
   $("#passwordConfirmationField,#newPasswordConfirmationField").keyup(function(){
     var value = $(this).val();

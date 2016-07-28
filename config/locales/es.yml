@@ -1,4 +1,31 @@
 es:
+  activerecord:
+    attributes:
+      tag:
+        title: "Titulo"
+        description: "Descripcion"
+      post:
+        title: "Titulo"
+        description: "Descripcion"
+      user:
+        name: "Nombre"
+        email: "Email"
+        password: "Contraseña"
+        password_confirmation: "Confirmacion de la contraseña"
+    errors:
+      messages:
+        inclusion: "no esta incluido en la lista"
+        blank: "no puede quedar en blanco"
+        taken: "ya esta siendo utilizado"
+        too_long:
+          one: es demasiado largo (maximo es 1 caracter)
+          other: es demasiado largo (maximo es %{count} caracteres)
+        too_short:
+          one: es demasiado corto (minimo es 1 caracter)
+          other: es demasiado corto (minimo es %{count} caracteres)
+        wrong_length:
+          one: es de longitud erronea (deberia ser 1 caracter)
+          other: es de longitud erronea (deberia ser %{count} caracteres)
   layouts:
     application:
       log_in: "Iniciar sesion"
