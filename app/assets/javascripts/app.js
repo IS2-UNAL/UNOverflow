@@ -237,3 +237,14 @@ ready = function() {
 }
 
 $(document).on('turbolinks:load', ready);
+$(document).on('turbolinks:load', function () {
+   tinymce.remove();
+   tinymce.init({
+     selector:'#descriptionField',
+     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image |  preview media fullpage | forecolor backcolor emoticons codesample',
+     plugins : 'advlist template searchreplace spellchecker autolink link image lists charmap hr table textcolor codesample preview pagebreak wordcount emoticons insertdatetime',
+     statusbar: false,
+     menubar: false
+
+   });
+});

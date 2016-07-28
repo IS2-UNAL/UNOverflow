@@ -3,13 +3,13 @@
   <head>
     <title>UnOverflow</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all','data-turbolinks-track' => false %>
+    <%= javascript_include_tag 'application','data-turbolinks-track' => false %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
 
-  <body>
+  <body data-no-turbolink>
     <%= render 'layouts/menu' %>
     <div class="container">
       <% flash.each do |key, value| %>
@@ -34,11 +34,13 @@
             </div>
             <div class="col-xs-4 col-sm-3 col-lg-2">
               <div class="row">
+
                 <div class="col-xs-6 col-sm-4 col-lg-4">
-                  <img class="img-responsive img-rounded" width="40", height="40" src=<%=asset_path "colombia.png" %> />
+                  <%= link_to image_tag("colombia.png", size:"40x40",class:"img-responsive img-rounded"), url_for( :locale => 'es' ) %>
                 </div>
+
                 <div class="col-xs-6 col-sm-4 col-lg-4">
-                  <img class="img-responsive img-rounded" width="40", height="40" src=<%=asset_path "unitedKingdom.png" %> />
+                  <%= link_to image_tag("unitedKingdom.png", size:"40x40",class:"img-responsive img-rounded"), url_for( :locale => 'en' ) %>
                 </div>
               </div>
 
@@ -75,7 +77,7 @@
               <% end -%>
           </div>
           <div class="modal-footer">
-            <%= f.submit "Log in", :class=>"btn btn-success" %>
+            <%= f.submit t('.log_in'), :class=>"btn btn-success" %>
             <% end %>
           </div>
         </div>

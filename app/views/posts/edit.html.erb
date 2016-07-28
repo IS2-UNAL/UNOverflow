@@ -1,8 +1,10 @@
-<h1>Editing Post</h1>
+<div class="page-header">
+  <h2><%= t('.edit')%></h2>
+</div>
 <%= render 'formEdit', post: @post %>
 <br>
 <div class="col-xs-12">
-  <%= link_to 'Show', @post, :class=>"btn btn-success" %>
-  <%= link_to 'Destroy', @post, :class=>"btn btn-danger btn-md", method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to 'Back', posts_path , :class=>"btn btn-default"%>
+  <%= link_to t('.show'), @post, :class=>"btn btn-success" %>
+  <%= link_to t('.destroy'), @post, :class=>"btn btn-danger btn-md", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to t('.back'), posts_path , :class=>"btn btn-default"%>
 </div>

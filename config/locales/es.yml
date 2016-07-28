@@ -1,0 +1,95 @@
+es:
+  layouts:
+    application:
+      log_in: "Iniciar sesion"
+    menu:
+      home: "Inicio"
+      about_us: "Acerca de nosotros"
+      contact_us: "Contactenos"
+      my_post: "Mis posts"
+      ask_question: "Preguntar"
+      profile: "Perfil"
+      log_out: "Cerrar sesion"
+      log_in: "Iniciar sesion"
+      sign_up: "Registrarse"
+  page:
+    index:
+      carrousel_caption_one: "Busque preguntas por una infinidad de infiltros como los son tags, fecha, tendencia de preguntas entre otros"
+      carrousel_caption_two: "Ayude a resolver preguntas y a crear una comunidad"
+      carrousel_caption_three: "Pregunte y encuetre respuestas a los problemas que lo agobian"
+      about_us: "About us"
+      andres_about: "Estudiante de ingenieria de sistemas en la universidad nacional de colombia, me encuentro en el noveno semestre <br> mis gustos y hobbies son diversos pero los mas importantes son: jugar football, beber cafe, conversar y por supuesto programar. Me encanta ver la EPL, me considero un gran experto de ella ademas de un gran fan del arsenal.<br>Estoy muy interesado en el desarrollo y en aprender nuevas cosas. Por el momento estoy concentrado en el desarrollo de app in iOS y swift tambien estoy intersado en patrones de diseño, la calidad del software y en aprender sobre herramientas las cuales permitan mas agile."
+      alejandro_about: "Descripcion acerca de alejandro"
+      contact_us: "Contactanos"
+      enter_email: "Ingresa tu correo"
+      enter_name: "Ingresa tu nombre"
+      enter_comments: "Ingresa tus comentarios"
+      send_comments: "Envia tus comentarios"
+  posts:
+    imagesPost:
+      add_image: "Añadir imagen"
+    tagSuggest:
+      add_tag: "Añadir tag"
+    index:
+      search_post: "Ingrese el nombre del post"
+      all_questions: "Todas la preguntas"
+      last_questions: "Ultimas preguntas"
+      week: "Ultima semana"
+      month: "Ultimo mes"
+      new_button: "Nuevo"
+    form:
+      create: "Crear"
+    new:
+      new_post: "Nuevo Post"
+      back: "Atras"
+    show:
+      detail: "Detalles"
+      edit: "Editar"
+      back: "Atras"
+    posts:
+      create_by: "Creado por"
+    edit:
+      edit: "Editar post"
+      show: "Mostrar"
+      destroy: "Destruir"
+      back: "Atras"
+    myPosts:
+      new_button: "Nuevo"
+      my_posts: "Mis posts"
+      search_post: "Ingrese el nombre del post"
+    formEdit:
+      update: "Actualizar"
+      is_solved: "¿Es resulto?"
+  tags:
+    form:
+      add: "Añadir"
+    tags:
+      show: "Mostrar"
+      edit: "Editar"
+      destroy: "Destruir"
+    index:
+      new_button: "Nuevo"
+      title: "Titulo"
+      actions: "Acciones"
+    edit:
+      edit: "Editar"
+      show: "Mostrar"
+      back: "Atras"
+    new:
+      new: "Nuevo Tag"
+      back: "Atras"
+    questionsByTag:
+      questions_tag: "Preguntas con el tag"
+    show:
+      details: "Detalles"
+      title: "Titulo"
+      description: "Descripcion"
+      actions: "Acciones"
+      edit: "Editar"
+      back: "Atras"
+  page_mailer:
+    received:
+      thanks:"Thanks for your comments"
+      message:"We are trying to improve our webpage every day and your comments are very important for us"
+      email:"Your email"
+      comments:"Your comments"

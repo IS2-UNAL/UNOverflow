@@ -9,7 +9,7 @@
 <div class="page-header">
   <% if user_signed_in? %>
     <% if current_user.role == "Admin" %>
-      <%= link_to "New", new_tag_path, :class=>"btn btn-success pull-right" %>
+      <%= link_to t('.new_button'), new_tag_path, :class=>"btn btn-success pull-right" %>
     <% end %>
   <% end %>
   <h2>Tags</h2>
@@ -30,7 +30,7 @@
       <thead>
         <tr>
           <th class="col-md-8" id="titleOrder">
-            Title
+            <%= t('.title')%>
             <% if @order == 'ASC' %>
               <span id="carretOrder">&#9660;</span>
             <% else %>
@@ -38,7 +38,7 @@
             <% end %>
 
           </th>
-          <th class="col-md-4">Actions</th>
+          <th class="col-md-4"><%= t('.actions')%></th>
         </tr>
       </thead>
       <tbody id="tags">
