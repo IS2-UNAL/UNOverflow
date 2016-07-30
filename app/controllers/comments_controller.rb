@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
   end
+  
   def addImage
     if request.xhr?
       @comment = Comment.find(params[:commentID])

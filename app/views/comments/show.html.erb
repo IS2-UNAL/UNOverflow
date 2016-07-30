@@ -3,8 +3,25 @@
 </div>
 <div class="panel panel-info">
   <div class="panel-body">
-    <%= @comment.answer.html_safe %>
+    <div class="col-xs-12">
+      <%= @comment.answer.html_safe %>
+    </div>
     <%= render 'imagesComment' %>
+
+    <% if user_signed_in? %>
+      <% if !@comment.userVoted?(current_user) %>
+        <div class="col-xs-12">
+          <h4>Do you like the post?</h4>
+
+          <%= form_tag addLike_likes_comments_by_users_path, :id=>"addLike", :method=>"post" do%>
+            <%= hidden_field_tag 'comment_id', @comment.id %>
+            <%= hidden_field_tag 'is_possitive', '0' %>
+          <% end %>
+          <i class="fa fa-thumbs-up fa-5x" id="up" aria-hidden="true"></i>
+          <i class="fa fa-thumbs-down fa-5x" id="down" aria-hidden="true"></i>
+        </div>
+      <% end %>
+    <% end %>
   </div>
   <div class="panel-footer">
     <h5>created by <%= @comment.user.username %></h5>

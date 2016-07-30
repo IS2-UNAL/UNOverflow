@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     scope 'admin' do
       resources :tags, only: [:new,:edit,:create,:update,:destroy]
     end
-    resources :likes_comments_by_users
+    resources :likes_comments_by_users do
+      collection do
+        post 'addLike', to: :addLike
+      end
+    end
     resources :images
     resources :posts do
       resources :comments, only: [:index,:new,:create]

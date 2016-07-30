@@ -46,6 +46,14 @@ ready = function() {
       }
     }
   });
+  $("#up").click(function(){
+    $("#is_possitive").val("1");
+    $("#addLike").submit();
+  });
+  $("#down").click(function(){
+    $("#is_possitive").val("2");
+    $("#addLike").submit();
+  });
 
   $('#tagField').keyup(function(){
     if ($('#tagField').val() == "") {

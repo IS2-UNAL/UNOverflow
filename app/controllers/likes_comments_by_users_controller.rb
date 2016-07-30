@@ -1,4 +1,5 @@
 class LikesCommentsByUsersController < ApplicationController
+  before_action :authenticate_user!, only: [:addLike]
   before_action :set_likes_comments_by_user, only: [:show, :edit, :update, :destroy]
 
   # GET /likes_comments_by_users
@@ -10,6 +11,22 @@ class LikesCommentsByUsersController < ApplicationController
   # GET /likes_comments_by_users/1
   # GET /likes_comments_by_users/1.json
   def show
+  end
+  def addLike
+    comment = Comment.find(params[:comment_id])
+    @post = comment.post
+    flash.notice = "Thanks for your vote"
+    possitive = false
+    if params[:is_possitive] == "1"
+      possitive = true
+    end
+    likes_comments_by_users = LikesCommentsByUser.new(comment_id:params[:comment_id],is_possitive:possitive)
+    likes_comments_by_users.user = current_user
+    if likes_comments_by_users.save
+      redirect_to @post
+    else
+      redirect_to comment
+    end
   end
 
   # GET /likes_comments_by_users/new
