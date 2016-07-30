@@ -74,6 +74,7 @@ en:
       details: "Details"
       add_image: "Add image"
       like_comment: "Do you like the commnet?"
+      vote: "Would you like to change your vote?"
       edit: "Edit"
       back: "Back"
     create:

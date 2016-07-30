@@ -28,29 +28,32 @@
 </ul>
 <br>
 <br>
-<%= form_tag search_posts_path, :method=>'get', :id=>'post_search', remote: true do %>
-  <div class="form-group">
-    <% if @index %>
-      <%= hidden_field_tag :type, 'all' %>
-    <% elsif @lastDay %>
-      <%= hidden_field_tag :type, 'lastDat' %>
-    <% elsif @lastWeek %>
-      <%= hidden_field_tag :type, 'lastWeek' %>
-    <% else %>
-      <%= hidden_field_tag :type, 'lastMonth' %>
-    <% end %>
-    <%= text_field_tag :searchPost, nil, class:"form-control", placeholder: t('.search_post')%>
+<% if !@posts.empty? %>
+  <%= form_tag search_posts_path, :method=>'get', :id=>'post_search', remote: true do %>
+    <div class="form-group">
+      <% if @index %>
+        <%= hidden_field_tag :type, 'all' %>
+      <% elsif @lastDay %>
+        <%= hidden_field_tag :type, 'lastDat' %>
+      <% elsif @lastWeek %>
+        <%= hidden_field_tag :type, 'lastWeek' %>
+      <% else %>
+        <%= hidden_field_tag :type, 'lastMonth' %>
+      <% end %>
+      <%= text_field_tag :searchPost, nil, class:"form-control", placeholder: t('.search_post')%>
+    </div>
+  <% end %>
+  <div class="col-xs-12 col-sm-8 col-lg-9">
+    <div id="posts">
+      <%= render 'posts' %>
+    </div>
+    <div id="paginate">
+      <%= render 'paginate' %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-lg-3">
+    In this part we should put the advanced filters
   </div>
 <% end %>
-<div class="col-xs-12 col-sm-8 col-lg-9">
-  <div id="posts">
-    <%= render 'posts' %>
-  </div>
-  <div id="paginate">
-    <%= render 'paginate' %>
-  </div>
-</div>
-<div class="col-xs-12 col-sm-4 col-lg-3">
-  In this part we should put the advanced filters
-</div>
+
 <div class="row"></div>

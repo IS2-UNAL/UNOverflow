@@ -83,6 +83,7 @@ es:
       add_image: "Añadir imagen"
       details: "Detalles"
       like_comment: "¿Te gusta el commentario?"
+      vote: "¿Quieres cambiar tu voto?"
       edit: "Editar"
       back: "Atras"
     create:

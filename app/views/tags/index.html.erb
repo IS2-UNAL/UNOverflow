@@ -14,17 +14,18 @@
   <% end %>
   <h2>Tags</h2>
 </div>
-<%= form_tag tags_path, :method => 'get', :id => "tags_search", remote: true do %>
-  <div class="form-group">
-    <% if @order == 'ASC' %>
-      <%= hidden_field_tag 'order', 'ASC' %>
-    <% else %>
-      <%= hidden_field_tag 'order', 'DESC' %>
-    <% end %>
-    <%= text_field_tag :search, nil, class:"form-control", placeholder: 'Enter the name of the tag'%>
-  </div>
-<% end %>
+
 <% if !@tags.empty? %>
+  <%= form_tag tags_path, :method => 'get', :id => "tags_search", remote: true do %>
+    <div class="form-group">
+      <% if @order == 'ASC' %>
+        <%= hidden_field_tag 'order', 'ASC' %>
+      <% else %>
+        <%= hidden_field_tag 'order', 'DESC' %>
+      <% end %>
+      <%= text_field_tag :search, nil, class:"form-control", placeholder: 'Enter the name of the tag'%>
+    </div>
+  <% end %>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
