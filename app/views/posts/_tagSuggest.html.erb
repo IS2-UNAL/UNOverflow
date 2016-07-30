@@ -6,7 +6,7 @@
         <div class="col-xs-12 col-sm-6 col-lg-3">
           <div id="tagSuggestValue">
             <h3 id="tagTittle"><%= tag.title %></h3>
-            <p><%= tag.description %></p>
+            <p><%= tag.description.html_safe %></p>
           </div>
           <button type="button"  class="btn btn-success" id="tagButton" value="<%= tag.title %>">
             <%= t('.add_tag') %>

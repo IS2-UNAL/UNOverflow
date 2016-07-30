@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require jquery-ui/effect-blind
 //= require jquery_ujs
@@ -23,4 +22,3 @@
 //= require zxcvbn
 //= require lightbox
 //= require app
-//= require turbolinks

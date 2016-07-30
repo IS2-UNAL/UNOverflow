@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
   end
-  
+
   def addImage
     if request.xhr?
       @comment = Comment.find(params[:commentID])
@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
     @comment.user_id =  current_user.id
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment, notice: t('.created') }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -59,11 +59,11 @@ class CommentsController < ApplicationController
     imagesDelete = Image.where(id:params[:image_ids])
     imagesDelete.each do |image|
       @comment.images.delete(image)
-      image.destroy
+      #image.destroy
     end
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @comment, notice: t('.updated') }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -78,7 +78,7 @@ class CommentsController < ApplicationController
     @post = @comment.post
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @post, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @post, notice: t('.destroy') }
       format.json { head :no_content }
     end
   end

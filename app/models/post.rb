@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :images
+  has_many :images, dependent: :destroy
   has_and_belongs_to_many :tags
   validates :title,:description, presence: true
   validates :title, uniqueness: true

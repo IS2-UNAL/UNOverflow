@@ -1,39 +1,5 @@
-var ready;
 Dropzone.autoDiscover = false;
-$(function(){
-  var mediaDropzone = new Dropzone("#media-dropzone");
-  Dropzone.options.mediaDropzone = {
-    success: function (response) {
-                eval(response.xhr.response);
-            }
-  };
-  mediaDropzone.options.acceptedFiles = ".jpeg,.jpg,.png,.gif";
-  mediaDropzone.options.maxFiles = 1;
-  mediaDropzone.options.parallelUploads = 1;
-  mediaDropzone.on("maxfilesexceeded", function(file) {
-        mediaDropzone.removeAllFiles();
-        mediaDropzone.addFile(file);
-  });
-  mediaDropzone.on("complete", function(file) {
-    var response = JSON.parse(file.xhr.response);
-    var _this = this;
-    if (_this.getUploadingFiles().length === 0 && _this.getQueuedFiles().length === 0) {
-      setTimeout(function(){
-        var rejectedFiles = _this.getRejectedFiles();
-        if (rejectedFiles.length != 0) {
-          alert("This file is not accepted")
-        }
-        $("#modalDropzone").modal('hide')
-        mediaDropzone.removeFile(file)
-        window.location.href = (response.name+response.id)
-      },2000);
-    }
-
-  });
-
-});
-
-ready = function() {
+$(document).ready(function(){
   $('a[href*="#"]:not([href="#carouselHome"])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
@@ -45,6 +11,15 @@ ready = function() {
         return false;
       }
     }
+  });
+  tinymce.remove();
+  tinymce.init({
+    selector:'#descriptionField',
+    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image |  preview media fullpage | forecolor backcolor emoticons codesample',
+    plugins : 'advlist template searchreplace spellchecker autolink link image lists charmap hr table textcolor codesample preview pagebreak wordcount emoticons insertdatetime',
+    statusbar: false,
+    menubar: false
+
   });
   $("#up").click(function(){
     $("#is_possitive").val("1");
@@ -221,7 +196,7 @@ ready = function() {
     var id = "" ;
     if ($(this).attr("id") == "passwordConfirmationField"){
       id = "#passwordField";
-    }else {
+    }else {
       id = "#newPasswordField";
     }
     var otherValue = $(id).val();
@@ -240,16 +215,34 @@ ready = function() {
     $(x1).after('<span class='+x3+'>' +x2 +'</span>');
   }
 
-}
-$(document).on('turbolinks:load', function () {
-   tinymce.remove();
-   tinymce.init({
-     selector:'#descriptionField',
-     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image |  preview media fullpage | forecolor backcolor emoticons codesample',
-     plugins : 'advlist template searchreplace spellchecker autolink link image lists charmap hr table textcolor codesample preview pagebreak wordcount emoticons insertdatetime',
-     statusbar: false,
-     menubar: false
+  var mediaDropzone = new Dropzone("#media-dropzone");
+  Dropzone.options.mediaDropzone = {
+    success: function (response) {
+                eval(response.xhr.response);
+            }
+  };
+  mediaDropzone.options.acceptedFiles = ".jpeg,.jpg,.png,.gif";
+  mediaDropzone.options.maxFiles = 1;
+  mediaDropzone.options.parallelUploads = 1;
+  mediaDropzone.on("maxfilesexceeded", function(file) {
+        mediaDropzone.removeAllFiles();
+        mediaDropzone.addFile(file);
+  });
+  mediaDropzone.on("complete", function(file) {
+    var response = JSON.parse(file.xhr.response);
+    var _this = this;
+    if (_this.getUploadingFiles().length === 0 && _this.getQueuedFiles().length === 0) {
+      setTimeout(function(){
+        var rejectedFiles = _this.getRejectedFiles();
+        if (rejectedFiles.length != 0) {
+          alert("This file is not accepted")
+        }
+        $("#modalDropzone").modal('hide')
+        mediaDropzone.removeFile(file)
+        window.location.href = (response.name+response.id)
+      },2000);
+    }
 
-   });
+  });
+
 });
-$(document).on('turbolinks:load', ready);

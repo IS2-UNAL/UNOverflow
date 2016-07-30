@@ -15,7 +15,7 @@ class LikesCommentsByUsersController < ApplicationController
   def addLike
     comment = Comment.find(params[:comment_id])
     @post = comment.post
-    flash.notice = "Thanks for your vote"
+    flash.notice = t('.thanks')
     possitive = false
     if params[:is_possitive] == "1"
       possitive = true

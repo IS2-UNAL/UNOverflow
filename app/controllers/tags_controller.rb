@@ -38,7 +38,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+        format.html { redirect_to @tag, notice: t('.created') }
         format.json { render :show, status: :created, location: @tag }
       else
         format.html { render :new }
@@ -52,7 +52,7 @@ class TagsController < ApplicationController
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
+        format.html { redirect_to @tag, notice: t('.updated') }
         format.json { render :show, status: :ok, location: @tag }
       else
         format.html { render :edit }
@@ -66,9 +66,9 @@ class TagsController < ApplicationController
   def destroy
     @tag.destroy
     if @tag.errors.any?
-      flash[:alert] = "We can't destroy this tag because it has some posts"
+      flash[:alert] = t('.message')
     else
-      flash[:notice] = "Tag was successfully destroyed."
+      flash[:notice] = t('.destroy')
     end
     respond_to do |format|
       format.html { redirect_to tags_url}
@@ -84,7 +84,7 @@ class TagsController < ApplicationController
 
     def isAdmin
       if current_user.role !=  "Admin"
-        flash[:alert] = "You don't have enough permissions to access to this place"
+        flash[:alert] = t('.admin')
         redirect_to root_path
       end
     end

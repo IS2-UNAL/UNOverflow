@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, :path  => '', :path_names => {:sign_in => 'loginHasAnImposibleURLBecauseWhereAreGoingToUseAModal',:sign_out=>'logout'}
   scope '(:locale)' do
-    resources :tags, only:[:index,:show] do
-      member do
-        get 'questionsByTag', to: :questionsByTag
-      end
-    end
     scope 'admin' do
-      resources :tags, only: [:new,:edit,:create,:update,:destroy]
+      resources :tags do
+        member do
+          get 'questionsByTag', to: :questionsByTag
+        end
+      end
     end
     resources :likes_comments_by_users do
       collection do
