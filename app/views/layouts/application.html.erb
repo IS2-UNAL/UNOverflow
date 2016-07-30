@@ -3,7 +3,7 @@
   <head>
     <title>UnOverflow</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-eval' => false  %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="turbolinks-cache-control" content="no-cache">
@@ -11,7 +11,7 @@
   </head>
 
 
-  <body data-no-turbolink="true">
+  <body >
     <%= render 'layouts/menu' %>
     <div class="container">
       <% flash.each do |key, value| %>
@@ -85,7 +85,7 @@
         </div>
       </div>
     </div>
-    <%= javascript_include_tag 'application', 'data-turbolinks-eval' => false %>
+    <%= javascript_include_tag 'application' %>
     <%= tinymce_assets %>
   </body>
 </html>

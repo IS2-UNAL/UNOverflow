@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   end
 
   def suggest
-    @tags = Tag.searchSuggest(params[:titleTag])
+    @tags = Tag.tagSuggest(params[:titleTag])
     if request.xhr?
 
     else
