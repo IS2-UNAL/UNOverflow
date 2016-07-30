@@ -7,11 +7,11 @@
     </td>
     <td class="col-md-4">
 
-      <%= link_to 'Show', tag, :class=>"btn btn-success btn-md" %>
+      <%= link_to t('.show'), tag, :class=>"btn btn-success btn-md" %>
       <% if user_signed_in? %>
         <% if current_user.role == "Admin" %>
-          <%= link_to 'Edit', edit_tag_path(tag), :class=>"btn btn-primary btn-md" %>
-          <%= link_to 'Destroy', tag, :class=>"btn btn-danger btn-md", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to t('.edit'), edit_tag_path(tag), :class=>"btn btn-primary btn-md" %>
+          <%= link_to t('.destroy'), tag, :class=>"btn btn-danger btn-md", method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
       <% end %>
     </td>

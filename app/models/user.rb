@@ -10,7 +10,7 @@ class User < ApplicationRecord
     "User"  => 0,
     "Admin" => 1
   }
-  validates :name, :username, :presence => true
+  validates :name, :username, :avatar, :presence => true
   validates :email, :username, :uniqueness => true
   validates :role, :inclusion => roles.keys
   validates_processing_of :avatar

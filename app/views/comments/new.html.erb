@@ -1,5 +1,7 @@
-<h1>New Comment</h1>
+
+<div class="page-header">
+  <h2><%=t('.new_comment') %></h2>
+</div>
 
 <%= render 'form', comment: @comment %>
-
-<%= link_to 'Back', comments_path %>
+<%= link_to t('.back'), @post, :class=>"btn btn-default" %>

@@ -21,11 +21,11 @@ $(function(){
       setTimeout(function(){
         var rejectedFiles = _this.getRejectedFiles();
         if (rejectedFiles.length != 0) {
-          alert("This files is not accepted")
+          alert("This file is not accepted")
         }
         $("#modalDropzone").modal('hide')
         mediaDropzone.removeFile(file)
-        window.location.href = ("/posts/"+response)
+        window.location.href = (response.name+response.id)
       },2000);
     }
 
@@ -46,10 +46,13 @@ ready = function() {
       }
     }
   });
-  $(document).on("click","#pop", function(event){
-    $('#imagePreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link
-    $('#imageModal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
-
+  $("#up").click(function(){
+    $("#is_possitive").val("1");
+    $("#addLike").submit();
+  });
+  $("#down").click(function(){
+    $("#is_possitive").val("2");
+    $("#addLike").submit();
   });
 
   $('#tagField').keyup(function(){
@@ -72,7 +75,7 @@ ready = function() {
   $('#searchPost').keyup(function(){
     $('#post_search').submit();
   });
-  $("#alert-app").fadeTo(2000,500).slideUp(500, function(){
+  $("#alert-app").fadeTo(4000,0.7).slideUp(1000, function(){
       $("#alert-app").alert('close');
   });
   $("#tab-first").click(function(){
@@ -210,6 +213,9 @@ ready = function() {
 
 
   });
+  $(document).on("click","#logInButton", function(event){
+    $( ".logIn" ).submit();
+  });
   $("#passwordConfirmationField,#newPasswordConfirmationField").keyup(function(){
     var value = $(this).val();
     var id = "" ;
@@ -235,5 +241,15 @@ ready = function() {
   }
 
 }
+$(document).on('turbolinks:load', function () {
+   tinymce.remove();
+   tinymce.init({
+     selector:'#descriptionField',
+     toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image |  preview media fullpage | forecolor backcolor emoticons codesample',
+     plugins : 'advlist template searchreplace spellchecker autolink link image lists charmap hr table textcolor codesample preview pagebreak wordcount emoticons insertdatetime',
+     statusbar: false,
+     menubar: false
 
+   });
+});
 $(document).on('turbolinks:load', ready);

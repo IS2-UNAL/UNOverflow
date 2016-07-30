@@ -20,4 +20,115 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      log_in: "Log in"
+    menu:
+      home: "Home"
+      about_us: "About us"
+      contact_us: "Contact us"
+      my_post: "My posts"
+      ask_question: "Ask a question"
+      profile: "Profile"
+      log_out: "Log out"
+      log_in: "Log in"
+      sign_up: "Sign up"
+  page:
+    index:
+      carrousel_caption_one: "Look for questions through different filters like tags, dates and more"
+      carrousel_caption_two: "Help to solve questions and create a community with us"
+      carrousel_caption_three: "Ask and find answers to the problem, which overwhelm you"
+      about_us: "About us"
+      andres_about: "I'm a student of computer science in the National University of Colombia. I'm in the ninth semester of it.<br> My likes and hobbies are very diverse but the most important are play football, drink coffee, have a nice talks and absolutelly the programming. I love watching the EPL, I am a big expert of it and Arsenal fan.<br> I'm very interested in development and learn new things every day. At the moment I'm focus in iOS development and the new programming language swift also I am interested in design patterns, software quality and the discovery of new tools to develop software in a better and agile way."
+      alejandro_about: "This is a description about Alejandro"
+      contact_us: "Contact us"
+      enter_email: "Enter your email"
+      enter_name: "Enter your name"
+      enter_comments: "Enter your comments"
+      send_comments: "Send your comments"
+  comments:
+    edit:
+      edit_comment: "Edit comment"
+    imagesComment:
+      add_image: "Add image"
+    formEdit:
+      create: "Update"
+    form:
+      create: "Add"
+    new:
+      new_comment: "New comment"
+    show:
+      details: "Details"
+      add_image: "Add image"
+  posts:
+    commentsPost:
+      comments: "Comments"
+    imagesPost:
+      add_image: "Add image"
+    tagSuggest:
+      add_tag: "Add tag"
+    index:
+      search_post: "Enter the name of the post"
+      all_questions: "All questions"
+      last_questions: "Last questions"
+      week: "Week"
+      month: "Month"
+      new_button: "New"
+    form:
+      create: "Create"
+    new:
+      new_post: "New Post"
+      back: "Back"
+    show:
+      add_image: "Add image"
+      new_comment: "New comment"
+      detail: "Details"
+      edit: "Edit"
+      back: "Back"
+    posts:
+      create_by: "Creted by"
+    edit:
+      edit: "Edit post"
+      show: "Show"
+      destroy: "Destroy"
+      back: "Back"
+    myPosts:
+      new_button: "New"
+      my_posts: "My posts"
+      search_post: "Enter the name of the post"
+    formEdit:
+      update: "Update"
+      is_solved: "¿Is the post solved?"
+  tags:
+    form:
+      add: "Add"
+    tags:
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+    index:
+      new_button: "New"
+      title: "Title"
+      actions: "Actioins"
+    edit:
+      edit: "Edit"
+      show: "Show"
+      back: "Back"
+    new:
+      new: "New Tag"
+      back: "Back"
+    questionsByTag:
+      questions_tag: "Questions with the tag"
+    show:
+      details: "Details"
+      title: "Title"
+      description: "Description"
+      actions: "Actions"
+      edit: "Edit"
+      back: "Back"
+  page_mailer:
+    received:
+      thanks:"Thanks for your comments"
+      message:"We are trying to improve our webpage every day and your comments are very important for us"
+      email:"Your email"
+      comments:"Your comments"

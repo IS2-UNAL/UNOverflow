@@ -1,12 +1,12 @@
 <div class="page-header">
   <% if user_signed_in? %>
-      <%= link_to "New",new_post_path, :class=>"btn btn-success pull-right" %>
+      <%= link_to t('.new_button'),new_post_path, :class=>"btn btn-success pull-right" %>
   <% end %>
-  <h2>My Posts</h2>
+  <h2><%= t('.my_posts')%></h2>
 </div>
 <%= form_tag search_posts_path, :method=>"get", :id=>"post_search", remote: true  do %>
   <div class="form-group">
-    <%= text_field_tag :searchPost, nil, class:"form-control", placeholder: 'Enter the name of the post'%>
+    <%= text_field_tag :searchPost, nil, class:"form-control", placeholder: t('.search_post')%>
   </div>
 <% end %>
 <div id="posts">

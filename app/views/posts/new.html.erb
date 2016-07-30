@@ -1,7 +1,7 @@
 <div class="page-header">
-  <h2>New Post</h2>
+  <h2><%= t('.new_post')%></h2>
 </div>
 
 <%= render 'form', post: @post %>
 
-<%= link_to 'Back', posts_path, :class=>"btn btn-default" %>
+<%= link_to t('.back'), posts_path, :class=>"btn btn-default" %>

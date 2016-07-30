@@ -1,5 +1,6 @@
 <div class="page-header">
-  <h2>Details</h2>
+  <%= link_to t('.new_comment'), new_post_comment_path(@post), :class=>"btn btn-success  pull-right" %>
+  <h2><%= t('.detail')%></h2>
 </div>
 <div class="row">
   <% if !@post.tags.empty? %>
@@ -28,21 +29,35 @@
     </div>
   </div>
   <div class="panel-footer">
-    created by <%= @post.user.username %>
+
+    <div class="pull-right">
+      <% if user_signed_in? %>
+        <% if @post.user ==  current_user %>
+          <%= link_to t('.edit'), edit_post_path(@post), :class=>"btn btn-success" %>
+        <% end %>
+      <% end %>
+      <%= link_to t('.back'), posts_path, :class=>"btn btn-default" %>
+    </div>
+
+    <h4>created by <%= @post.user.username %></h4>
+
+
   </div>
 </div>
-<% if user_signed_in? %>
-  <% if @post.user ==  current_user %>
-    <%= link_to 'Edit', edit_post_path(@post), :class=>"btn btn-success" %>
-  <% end %>
-<% end %>
-<%= link_to 'Back', posts_path, :class=>"btn btn-default" %>
+<br>
+<div class="commentsPost">
+  <%= render 'commentsPost' %>
+</div>
+<div class="paginateComments">
+  <%= render 'paginateComments' %>
+</div>
+
 
 <div class="modal fade in" id="modalDropzone">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3>Add Image</h3>
+        <h3><%= t('.add_image') %></h3>
       </div>
       <div class="modal-body">
         <form controller="/posts" method="post" action="addImage" id="media-dropzone" class="dropzone" enctype="multipart/form-data">
