@@ -46,7 +46,19 @@ en:
       enter_name: "Enter your name"
       enter_comments: "Enter your comments"
       send_comments: "Send your comments"
+  comments:
+    imagesComment:
+      add_image: "Add image"
+    form:
+      create: "Add"
+    new:
+      new_comment: "New comment"
+    show:
+      details: "Details"
+      add_image: "Add image"
   posts:
+    commentsPost:
+      comments: "Comments"
     imagesPost:
       add_image: "Add image"
     tagSuggest:
@@ -64,6 +76,8 @@ en:
       new_post: "New Post"
       back: "Back"
     show:
+      add_image: "Add image"
+      new_comment: "New comment"
       detail: "Details"
       edit: "Edit"
       back: "Back"

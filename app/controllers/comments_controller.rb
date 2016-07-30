@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit,:new,:create,:update,:destroy]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
@@ -6,15 +7,29 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
   end
-
+  def addImage
+    if request.xhr?
+      @comment = Comment.find(params[:commentID])
+      @image =  Image.new(image:params[:file])
+      @comment.images << @image
+      if @image.save!
+        @comment.save!
+        render json: {:id=>@comment.id,:name=>"/comments/"}
+      end
+    else
+      redirect_to root_path
+    end
+  end
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @post =  @comment.post
   end
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    @post = Post.find params[:post_id]
+    @comment = Comment.new(:post =>@post)
   end
 
   # GET /comments/1/edit
@@ -25,7 +40,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-
+    @comment.user_id =  current_user.id
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -69,6 +84,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:answer, :post_id, :user_id)
+      params.require(:comment).permit(:answer,:post_id)
     end
 end

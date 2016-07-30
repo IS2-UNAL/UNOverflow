@@ -6,12 +6,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.paginate(:page => params[:page],:per_page => 10).order('title ASC')
+    @posts = Post.allPosts(params[:page])
     @index = "all"
   end
 
   def myPosts
-    @posts = Post.where("user_id = ? ",current_user.id).paginate(:page => params[:page], :per_page => 10).order('title ASC')
+    @posts = Post.myPosts(params[:page],current_user.id)
   end
 
   def addImage
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
       @post.images<<@image
       if @image.save!
         @post.save!
-        render json: @post.id
+        render json: {:id => @post.id,:name => "/posts/"}
       end
     else
       redirect_to root_path
@@ -31,19 +31,19 @@ class PostsController < ApplicationController
   end
 
   def lastDay
-    @posts = Post.where("updated_at >= ? ", 1.days.ago).paginate(:page => params[:page],:per_page =>10).order('title ASC')
+    @posts = Post.postWithFilterDates(params[:page],1.days.ago)
     @lastDay = "lastDay"
     render "index"
   end
 
   def lastWeek
-    @posts = Post.where("updated_at >= ? ", 1.week.ago).paginate(:page => params[:page],:per_page =>10).order('title ASC')
+    @posts = Post.postWithFilterDates(params[:page],1.week.ago)
     @lastWeek = "lastWeek"
     render "index"
   end
 
   def lastMonth
-    @posts = Post.where("updated_at >= ?", 1.month.ago).paginate(:page => params[:page],:per_page => 10).order('title ASC')
+    @posts = Post.postWithFilterDates(params[:page],1.month.ago)
     @lastMoth = "lastMonth"
     render "index"
   end
@@ -61,15 +61,15 @@ class PostsController < ApplicationController
         type = 1.month.ago
     end
     if type == ""
-      @posts = Post.all.where("title LIKE ?", "%#{params[:searchPost].strip}%").paginate(:page => params[:page],:per_page => 10).order('title ASC')
+      @posts = Post.search(params[:page],params[:searchPost].strip)
     else
-      @posts = Post.where("updated_at >= ? AND title LIKE ?", type,"%#{params[:searchPost].strip}%").paginate(:page => params[:page],:per_page =>10).order('title ASC')
+      @posts = Post.searchDate(params[:page],params[:searchPost].strip,type)
     end
     render "index"
   end
 
   def suggest
-    @tags = Tag.where('title LIKE ?', "#{params[:titleTag]}%")
+    @tags = Tag.searchSuggest(params[:titleTag])
     if request.xhr?
 
     else
@@ -80,6 +80,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comments = @post.comments.paginate(:page => params[:page],:per_page => 10).order("created_at DESC")
   end
 
   # GET /posts/new

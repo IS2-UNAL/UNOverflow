@@ -1,0 +1,21 @@
+<% if !@comment.images.empty? %>
+  <div class="row">
+    <% @comment.images.each do |img|%>
+      <div class="col-lg-4 col-sm-6 col-xs-12">
+        <a href="<%=img.image.url%>" data-lightbox="comments">
+          <img src="<%=img.image.url%>"  class="img-thumbnail img-responsive"  width="100" height="100">
+        </a>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<br>
+<% if user_signed_in? %>
+  <% if @comment.user == current_user %>
+    <% if @comment.images.length < 5 %>
+      <div class="col-xs-12">
+        <a href="" data-toggle="modal" data-target="#modalDropzone" data-keyboard="true" class="btn btn-success"><%= t('.add_image')%></a>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

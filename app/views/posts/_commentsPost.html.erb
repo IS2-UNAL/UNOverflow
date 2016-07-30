@@ -1,0 +1,30 @@
+<% if !@comments.empty? %>
+  <h3><%= t('.comments')%></h3>
+  <% @comments.each do |comment| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <% if user_signed_in? %>
+
+            <% if comment.user == current_user %>
+              <%= link_to "created by " + comment.user.username, edit_comment_path(comment) %>
+            <% else %>
+              <%= link_to "created by " + comment.user.username, comment %>
+            <% end %>
+          <% else %>
+            <%= link_to "created by " + comment.user.username, comment %>
+          <% end %>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= comment.answer.html_safe %>
+        <% if !comment.images.empty? %>
+          <div class="row">
+            <%= render :partial => "imagesComment", :collection => comment.images, :as => :image %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+<% end %>

@@ -21,4 +21,5 @@
 //= require bootstrap/carousel
 //= require tinymce
 //= require zxcvbn
+//= require lightbox
 //= require app
