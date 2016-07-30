@@ -57,8 +57,12 @@ es:
       enter_comments: "Ingresa tus comentarios"
       send_comments: "Envia tus comentarios"
   comments:
+    edit:
+      edit_comment: "Edit comentario"
     imagesComment:
       add_image: "Añadir imagen"
+    formEdit:
+      create: "Update"
     form:
       create: "Añadir"
     new:

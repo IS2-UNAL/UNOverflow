@@ -233,8 +233,6 @@ ready = function() {
   }
 
 }
-
-$(document).on('turbolinks:load', ready);
 $(document).on('turbolinks:load', function () {
    tinymce.remove();
    tinymce.init({
@@ -246,3 +244,4 @@ $(document).on('turbolinks:load', function () {
 
    });
 });
+$(document).on('turbolinks:load', ready);

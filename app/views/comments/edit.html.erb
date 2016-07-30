@@ -1,6 +1,11 @@
-<h1>Editing Comment</h1>
+<div class="page-header">
+  <h2><%= t('.edit_comment') %></h2>
+</div>
 
-<%= render 'form', comment: @comment %>
+<%= render 'formEdit', comment: @comment %>
+<div class="col-xs-12">
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+  <%= link_to 'Show', @comment, :class=>"btn btn-success" %>
+  <%= link_to t('.destroy'), @comment, :class=>"btn btn-danger btn-md", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Back', @comment.post, :class=>"btn btn-default" %>
+</div>

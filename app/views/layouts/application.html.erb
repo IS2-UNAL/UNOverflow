@@ -3,9 +3,11 @@
   <head>
     <title>UnOverflow</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all',"data-turbolinks-track" => false  %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-eval' => false  %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="turbolinks-cache-control" content="no-cache">
+
   </head>
 
 
@@ -83,7 +85,7 @@
         </div>
       </div>
     </div>
-    <%= javascript_include_tag 'application',"data-turbolinks-track" => false %>
-
+    <%= javascript_include_tag 'application', 'data-turbolinks-eval' => false %>
+    <%= tinymce_assets %>
   </body>
 </html>

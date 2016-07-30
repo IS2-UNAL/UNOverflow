@@ -55,6 +55,11 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+    imagesDelete = Image.where(id:params[:image_ids])
+    imagesDelete.each do |image|
+      @comment.images.delete(image)
+      image.destroy
+    end
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
@@ -69,9 +74,10 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @post = @comment.post
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @post, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
