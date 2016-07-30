@@ -57,19 +57,29 @@ es:
       enter_comments: "Ingresa tus comentarios"
       send_comments: "Envia tus comentarios"
   comments:
+    show: "Mostrar"
+    edit: "Editar"
+    destroy: "Destruir"
     edit:
       edit_comment: "Edit comentario"
+      show: "Mostrar"
+      destroy: "Destruir"
+      back: "Atras"
     imagesComment:
       add_image: "Añadir imagen"
     formEdit:
-      create: "Update"
+      create: "Actualizar"
     form:
       create: "Añadir"
     new:
       new_comment: "Nuevo comentario"
+      back: "Atras"
     show:
       add_image: "Añadir imagen"
       details: "Detalles"
+      like_comment: "¿Te gusta el commentario?"
+      edit: "Editar"
+      back: "Atras"
   posts:
     commentsPost:
       comments: "Comentarios"

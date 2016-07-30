@@ -5,7 +5,7 @@
 <%= render 'formEdit', comment: @comment %>
 <div class="col-xs-12">
 
-  <%= link_to 'Show', @comment, :class=>"btn btn-success" %>
+  <%= link_to t('.show'), @comment, :class=>"btn btn-success" %>
   <%= link_to t('.destroy'), @comment, :class=>"btn btn-danger btn-md", method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to 'Back', @comment.post, :class=>"btn btn-default" %>
+  <%= link_to t('.back'), @comment.post, :class=>"btn btn-default" %>
 </div>
