@@ -56,6 +56,11 @@ es:
       enter_name: "Ingresa tu nombre"
       enter_comments: "Ingresa tus comentarios"
       send_comments: "Envia tus comentarios"
+    contactUS:
+      message:"Tus commentarios o emial no es valido"
+  likes_comments_by_users:
+    addLike:
+      thanks: "Gracias por votar"
   comments:
     show: "Mostrar"
     edit: "Editar"
@@ -80,6 +85,12 @@ es:
       like_comment: "¿Te gusta el commentario?"
       edit: "Editar"
       back: "Atras"
+    create:
+      created: "El comentario fue exitosamente creado"
+    update:
+      updated: "El comentario fue exitosamente actualizado"
+    destroy:
+      destroy: "Comment was successfully destroyed."
   posts:
     commentsPost:
       comments: "Comentarios"
@@ -119,6 +130,12 @@ es:
     formEdit:
       update: "Actualizar"
       is_solved: "¿Es resulto?"
+    create:
+      created: "El post fue exitosament creado"
+    update:
+      updated: "El post fue exitosamente acutalizado"
+    destroy:
+      destroy: "El post fue exitosmante destruido"
   tags:
     form:
       add: "Añadir"
@@ -146,9 +163,18 @@ es:
       actions: "Acciones"
       edit: "Editar"
       back: "Atras"
+    create:
+      created: "El tag fue exitosamente creado"
+    update:
+      updtated: "El tag fue exitosmament actualizado"
+    destroy:
+      destroy: "El tag fue exitosamente destruido"
+      message: "No podemos destruir este tag porque esta asociado con algunos posts"
+    isAdmin:
+      admin: "Tu no tienes permisos para acceder a este lugar"
   page_mailer:
     received:
-      thanks:"Thanks for your comments"
-      message:"We are trying to improve our webpage every day and your comments are very important for us"
-      email:"Your email"
-      comments:"Your comments"
+      thanks:"Gracias por tus comentarios"
+      message:"Estamos intentando mejor cada dia y tus comentarios son muy importatnes para nosotros"
+      email:"Tu email"
+      comments:"Tus comentarios"

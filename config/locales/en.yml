@@ -46,6 +46,11 @@ en:
       enter_name: "Enter your name"
       enter_comments: "Enter your comments"
       send_comments: "Send your comments"
+    contactUS:
+      message:"Your comments or email aren't not valid"
+  likes_comments_by_users:
+    addLike:
+      thanks: "Thanks for your vote"
   comments:
     index:
       show: "Show"
@@ -71,6 +76,12 @@ en:
       like_comment: "Do you like the commnet?"
       edit: "Edit"
       back: "Back"
+    create:
+      created: "Comment was successfully created."
+    update:
+      updated: "Comment was successfully updated."
+    destroy:
+      destroy: "Comment was successfully destroyed."
   posts:
     commentsPost:
       comments: "Comments"
@@ -96,6 +107,12 @@ en:
       detail: "Details"
       edit: "Edit"
       back: "Back"
+    create:
+      created: "Post was successfully created."
+    update:
+      updated: "Post was successfully updated."
+    destroy:
+      destroy: "Post was successfully destroyed."
     posts:
       create_by: "Creted by"
     edit:
@@ -137,6 +154,15 @@ en:
       actions: "Actions"
       edit: "Edit"
       back: "Back"
+    create:
+      created: "Tag was successfully created."
+    update:
+      updtated: "Tag was successfully updated."
+    destroy:
+      destroy: "Tag was successfully destroyed."
+      message: "We can't destroy this tag because it has some posts"
+    isAdmin:
+      admin: "You don't have enough permissions to access to this place"
   page_mailer:
     received:
       thanks:"Thanks for your comments"

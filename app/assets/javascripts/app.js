@@ -196,7 +196,7 @@ $(document).ready(function(){
     var id = "" ;
     if ($(this).attr("id") == "passwordConfirmationField"){
       id = "#passwordField";
-    }else {
+    }else {
       id = "#newPasswordField";
     }
     var otherValue = $(id).val();
@@ -234,7 +234,7 @@ $(document).ready(function(){
     if (_this.getUploadingFiles().length === 0 && _this.getQueuedFiles().length === 0) {
       setTimeout(function(){
         var rejectedFiles = _this.getRejectedFiles();
-        if (rejectedFiles.length != 0) {
+        if (rejectedFiles.length != 0) {
           alert("This file is not accepted")
         }
         $("#modalDropzone").modal('hide')

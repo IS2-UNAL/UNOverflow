@@ -10,7 +10,7 @@
       </tr>
       <tr>
         <td class="col-md-3"><%= t('.description') %></td>
-        <td class="col-md-9"><%= @tag.description %></td>
+        <td class="col-md-9"><%= @tag.description.html_safe %></td>
       </tr>
       <tr class="info">
         <td class="col-md-3"><%= t('.acctions')%></td>

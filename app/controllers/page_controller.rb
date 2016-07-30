@@ -6,7 +6,7 @@ class PageController < ApplicationController
       PageMailer.received(params[:email],params[:comment], params[:name]).deliver_later
       redirect_to root_url
     else
-      redirect_to root_url, notice:"Your comments or email aren't not valid"
+      redirect_to root_url, notice:t('.message')
     end
 
   end
