@@ -10,15 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turbolinks
 //= require jquery
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require jquery-ui/effect-blind
 //= require jquery_ujs
-//= require jquery.turbolinks
 //= require dropzone
 //= require bootstrap/dropdown
 //= require bootstrap/carousel
 //= require tinymce
+//= require tinymce-jquery
 //= require zxcvbn
+//= require lightbox
 //= require app
+//= require turbolinks

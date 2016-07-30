@@ -6,6 +6,12 @@ class Tag < ApplicationRecord
   validates :description, length: {minimum: 10}
   before_destroy :ensure_not_referenced_by_any_posts
 
+  def self.tagSuggest(title)
+    where('title LIKE ?',"%#{title}%")
+  end
+  def self.tagSearch(page,search,order)
+    where('title LIKE ?',"%#{search}%").paginate(:page => page,:per_page => 10).order("title #{order}")
+  end
   private
     def ensure_not_referenced_by_any_posts
       unless posts.empty?

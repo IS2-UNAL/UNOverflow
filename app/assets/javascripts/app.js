@@ -21,11 +21,11 @@ $(function(){
       setTimeout(function(){
         var rejectedFiles = _this.getRejectedFiles();
         if (rejectedFiles.length != 0) {
-          alert("This files is not accepted")
+          alert("This file is not accepted")
         }
         $("#modalDropzone").modal('hide')
         mediaDropzone.removeFile(file)
-        window.location.href = ("/posts/"+response)
+        window.location.href = (response.name+response.id)
       },2000);
     }
 
@@ -46,10 +46,13 @@ ready = function() {
       }
     }
   });
-  $(document).on("click","#pop", function(event){
-    $('#imagePreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link
-    $('#imageModal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
-
+  $("#up").click(function(){
+    $("#is_possitive").val("1");
+    $("#addLike").submit();
+  });
+  $("#down").click(function(){
+    $("#is_possitive").val("2");
+    $("#addLike").submit();
   });
 
   $('#tagField').keyup(function(){
@@ -238,8 +241,6 @@ ready = function() {
   }
 
 }
-
-$(document).on('turbolinks:load', ready);
 $(document).on('turbolinks:load', function () {
    tinymce.remove();
    tinymce.init({
@@ -251,3 +252,4 @@ $(document).on('turbolinks:load', function () {
 
    });
 });
+$(document).on('turbolinks:load', ready);

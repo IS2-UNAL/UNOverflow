@@ -1,6 +1,10 @@
 es:
   activerecord:
+    models:
+      comment: "commentario"
     attributes:
+      comment:
+        answer: "Respuesta"
       tag:
         title: "Titulo"
         description: "Descripcion"
@@ -52,7 +56,23 @@ es:
       enter_name: "Ingresa tu nombre"
       enter_comments: "Ingresa tus comentarios"
       send_comments: "Envia tus comentarios"
+  comments:
+    edit:
+      edit_comment: "Edit comentario"
+    imagesComment:
+      add_image: "Añadir imagen"
+    formEdit:
+      create: "Update"
+    form:
+      create: "Añadir"
+    new:
+      new_comment: "Nuevo comentario"
+    show:
+      add_image: "Añadir imagen"
+      details: "Detalles"
   posts:
+    commentsPost:
+      comments: "Comentarios"
     imagesPost:
       add_image: "Añadir imagen"
     tagSuggest:
@@ -70,6 +90,8 @@ es:
       new_post: "Nuevo Post"
       back: "Atras"
     show:
+      add_image: "Añadir imagen"
+      new_comment: "Nuevo comentario"
       detail: "Detalles"
       edit: "Editar"
       back: "Atras"

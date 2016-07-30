@@ -1,19 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h2><%= t('.details')%></h2>
+</div>
+<div class="panel panel-info">
+  <div class="panel-body">
+    <div class="col-xs-12">
+      <%= @comment.answer.html_safe %>
+    </div>
+    <%= render 'imagesComment' %>
 
-<p>
-  <strong>Answer:</strong>
-  <%= @comment.answer %>
-</p>
+    <% if user_signed_in? %>
+      <% if !@comment.userVoted?(current_user) %>
+        <div class="col-xs-12">
+          <h4>Do you like the post?</h4>
 
-<p>
-  <strong>Post:</strong>
-  <%= @comment.post %>
-</p>
+          <%= form_tag addLike_likes_comments_by_users_path, :id=>"addLike", :method=>"post" do%>
+            <%= hidden_field_tag 'comment_id', @comment.id %>
+            <%= hidden_field_tag 'is_possitive', '0' %>
+          <% end %>
+          <i class="fa fa-thumbs-up fa-5x" id="up" aria-hidden="true"></i>
+          <i class="fa fa-thumbs-down fa-5x" id="down" aria-hidden="true"></i>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="panel-footer">
+    <h5>created by <%= @comment.user.username %></h5>
+  </div>
+</div>
+<% if user_signed_in? %>
+  <% if current_user ==  @comment.user %>
+    <%= link_to 'Edit', edit_comment_path(@comment), :class=>"btn btn-success" %>
+  <% end %>
+<% end %>
+<%= link_to 'Back', @post ,:class=>"btn btn-default"%>
 
-<p>
-  <strong>User:</strong>
-  <%= @comment.user %>
-</p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<div class="modal fade-in" id="modalDropzone">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><%=t('.add_image') %></h3>
+      </div>
+      <div class="modal-body">
+        <form controller="/comment" method="post" action="addImage" id="media-dropzone" class="dropzone" enctype="multipart/form-data">
+          <input name="authenticity_token" type="hidden" value="<%=form_authenticity_token%>">
+          <input name="commentID" type="hidden" value="<%=@comment.id%>">
+          <div class="fallback">
+            <input name="media" type="file"  />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

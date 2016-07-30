@@ -8,7 +8,7 @@ class TagsController < ApplicationController
   def index
     search = params[:search]
     search ||= ""
-    @tags = Tag.where('title LIKE ?', "%#{search.strip}%").paginate(:page => params[:page], :per_page => 10).order("title #{params[:order]}")
+    @tags = Tag.tagSearch(params[:page],search.strip,params[:order])
     @order = params[:order]
     @order ||= "ASC"
   end
