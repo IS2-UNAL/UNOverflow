@@ -11,7 +11,7 @@
     <% if user_signed_in? %>
       <% if !@comment.userVoted?(current_user) %>
         <div class="col-xs-12">
-          <h4>Do you like the post?</h4>
+          <h4><%= t('like_comment')%></h4>
 
           <%= form_tag addLike_likes_comments_by_users_path, :id=>"addLike", :method=>"post" do%>
             <%= hidden_field_tag 'comment_id', @comment.id %>
@@ -29,10 +29,10 @@
 </div>
 <% if user_signed_in? %>
   <% if current_user ==  @comment.user %>
-    <%= link_to 'Edit', edit_comment_path(@comment), :class=>"btn btn-success" %>
+    <%= link_to t('.edit'), edit_comment_path(@comment), :class=>"btn btn-success" %>
   <% end %>
 <% end %>
-<%= link_to 'Back', @post ,:class=>"btn btn-default"%>
+<%= link_to t('.back'), @post ,:class=>"btn btn-default"%>
 
 <div class="modal fade-in" id="modalDropzone">
   <div class="modal-dialog">

@@ -47,8 +47,15 @@ en:
       enter_comments: "Enter your comments"
       send_comments: "Send your comments"
   comments:
+    index:
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
     edit:
       edit_comment: "Edit comment"
+      show: "Show"
+      destroy: "Destroy"
+      back: "Back"
     imagesComment:
       add_image: "Add image"
     formEdit:
@@ -57,9 +64,13 @@ en:
       create: "Add"
     new:
       new_comment: "New comment"
+      back: "Back"
     show:
       details: "Details"
       add_image: "Add image"
+      like_comment: "Do you like the commnet?"
+      edit: "Edit"
+      back: "Back"
   posts:
     commentsPost:
       comments: "Comments"
