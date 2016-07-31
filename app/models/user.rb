@@ -17,6 +17,9 @@ class User < ApplicationRecord
   validate :image_size_validation
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable
+  def self.userSuggest(username)
+    where('username LIKE ?', "%#{username}%")
+  end
   private
     def image_size_validation
       errors[:avatar] << "should be lees than 1MB" if avatar.size > 1.megabytes

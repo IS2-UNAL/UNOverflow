@@ -24,11 +24,15 @@ Rails.application.routes.draw do
         get 'lastMonth', to: :lastMonth
         get 'suggest', to: :suggest
         get 'search', to: :search
+        get 'userSuggest', to: :userSuggest
+        get 'searchUser', to: :searchUser
+        get 'searchTag', to: :searchTag
       end
 
     end
     resources :comments, only: [:show,:edit,:update,:destroy] do
       collection do
+        get  'myComments', to: :myComments
         post 'addImage', to: :addImage
       end
     end

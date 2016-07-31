@@ -20,13 +20,32 @@ class LikesCommentsByUsersController < ApplicationController
     if params[:is_possitive] == "1"
       possitive = true
     end
-    likes_comments_by_users = LikesCommentsByUser.new(comment_id:params[:comment_id],is_possitive:possitive)
-    likes_comments_by_users.user = current_user
-    if likes_comments_by_users.save
-      redirect_to @post
+    vote = LikesCommentsByUser.where("user_id = ? AND comment_id = ?",current_user.id,params[:comment_id]).limit(1)
+    if vote[0] != nil
+      vote[0].is_possitive = possitive
+      if vote[0].save
+        pos = comment.possitiveComments
+        neg = comment.likes_comments_by_users.length - pos
+        comment.weight = pos * 0.6 - neg * 0.4
+        comment.save
+        redirect_to @post
+      else
+        redirect_to comment
+      end
     else
-      redirect_to comment
+      likes_comments_by_users = LikesCommentsByUser.new(comment_id:params[:comment_id],is_possitive:possitive)
+      likes_comments_by_users.user = current_user
+      if likes_comments_by_users.save
+        pos = comment.possitiveComments
+        neg = comment.likes_comments_by_users.length - pos
+        comment.weight = pos * 0.6 - neg * 0.4
+        comment.save
+        redirect_to @post
+      else
+        redirect_to comment
+      end
     end
+
   end
 
   # GET /likes_comments_by_users/new

@@ -33,6 +33,7 @@ en:
       log_out: "Log out"
       log_in: "Log in"
       sign_up: "Sign up"
+      my_comments: "My comments"
   page:
     index:
       carrousel_caption_one: "Look for questions through different filters like tags, dates and more"
@@ -52,6 +53,9 @@ en:
     addLike:
       thanks: "Thanks for your vote"
   comments:
+    show: "Mostrar"
+    edit: "Editar"
+    destroy: "Destruir"
     index:
       show: "Show"
       edit: "Edit"
@@ -70,10 +74,15 @@ en:
     new:
       new_comment: "New comment"
       back: "Back"
+    myComments:
+      my_comments: "My comments"
+      answer: "Answer"
+      actions: "Actions"
     show:
       details: "Details"
       add_image: "Add image"
       like_comment: "Do you like the commnet?"
+      vote: "Would you like to change your vote?"
       edit: "Edit"
       back: "Back"
     create:
@@ -96,6 +105,15 @@ en:
       week: "Week"
       month: "Month"
       new_button: "New"
+      filters: "Filters"
+      user_placeholder: "Enter the username of the user"
+      tag_placeholder: "Enter the name of the tag"
+      solve: "Solved"
+      no_solved: "No solved"
+    userSuggest:
+      search: "Search"
+    tagSuggestSearch:
+      search: "Search"
     form:
       create: "Create"
     new:

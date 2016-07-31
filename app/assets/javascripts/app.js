@@ -1,5 +1,8 @@
 Dropzone.autoDiscover = false;
 $(document).ready(function(){
+  $('[data-toggle="offcanvas"]').click(function () {
+    $('.row-offcanvas').toggleClass('active')
+  });
   $('a[href*="#"]:not([href="#carouselHome"])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
@@ -43,6 +46,69 @@ $(document).ready(function(){
       });
     }
   });
+  $('#userField').keyup(function(){
+    if($('#userField').val() == ""){
+      $('.userSuggest').remove();
+    }else{
+      $.ajax({
+        url: "/posts/userSuggest",
+        type: "GET",
+        data: {username: $('#userField').val()},
+        success: function(resutl){}
+      });
+    }
+  });
+  $('#tagFieldSearch').keyup(function(){
+    if($('#tagFieldSearch').val() == ""){
+      $('.tagFieldSearch').remove();
+    }else{
+      $.ajax({
+        url: "/posts/suggest",
+        type: "GET",
+        data: {titleTag: $('#tagFieldSearch').val(),filter: ""},
+        success: function(resutl){}
+      });
+    }
+  });
+  $(document).on('click',"#tagButton",function(){
+    $('#tagFieldSearch').val("");
+    $('.tagFieldSearch').remove();
+    $('#searchPost').val("");
+    var i = "0"
+    var j = "0"
+    if($('#solved').is(':checked')){
+      i = "1"
+    }
+    if($('#noSolved').is(':checked')){
+      j = "1"
+    }
+    $.ajax({
+      url: "/posts/searchTag",
+      type: "GET",
+      data: {id: $(this).attr('value'),type:$("#type").val(),solved:i,noSolved:j},
+      success: function(result){}
+    });
+  });
+  $(document).on('click',"#userButton",function(){
+    $('#userField').val("");
+    $('.userSuggest').remove();
+    $('#searchPost').val("");
+    var i = "0"
+    var j = "0"
+    if($('#solved').is(':checked')){
+      i = "1"
+    }
+    if($('#noSolved').is(':checked')){
+      j = "1"
+    }
+    $.ajax({
+      url: "/posts/searchUser",
+      type: "GET",
+      data: {username: $(this).attr('value'),type: $("#type").val(),solved:i,noSolved:j},
+      success: function(result){}
+    });
+
+  });
 
   $('#search').keyup(function(){
     $('#tags_search').submit();
@@ -55,6 +121,8 @@ $(document).ready(function(){
   });
   $("#tab-first").click(function(){
     $('#searchPost').val("");
+    $('#solved').prop('checked',true);
+    $('#noSolved').prop('checked',true);
     $('#type').val("all");
     $("#tab-second").removeClass("active")
     $("#tab-third").removeClass("active")
@@ -63,6 +131,8 @@ $(document).ready(function(){
   });
   $("#tab-second").click(function(){
     $('#searchPost').val("");
+    $('#solved').prop('checked',true);
+    $('#noSolved').prop('checked',true);
     $('#type').val("lastDay");
     $("#tab-second").addClass("active")
     $("#tab-third").removeClass("active")
@@ -71,6 +141,8 @@ $(document).ready(function(){
   });
   $("#tab-third").click(function(){
     $('#searchPost').val("");
+    $('#solved').prop('checked',true);
+    $('#noSolved').prop('checked',true);
     $('#type').val("lastWeek");
     $("#tab-second").removeClass("active")
     $("#tab-third").addClass("active")
@@ -79,6 +151,8 @@ $(document).ready(function(){
   });
   $("#tab-fourth").click(function(){
     $('#searchPost').val("");
+    $('#solved').prop('checked',true);
+    $('#noSolved').prop('checked',true);
     $('#type').val("lastMonth");
     $("#tab-second").removeClass("active")
     $("#tab-third").removeClass("active")
@@ -97,8 +171,22 @@ $(document).ready(function(){
       $('#tags_search').submit();
 
   });
+  $('#solved,#noSolved').change(function(){
+    var i = "0"
+    var j = "0"
+    if($('#solved').is(':checked')){
+      i = "1"
+    }
+    if($('#noSolved').is(':checked')){
+      j = "1"
+    }
+    $('#solvedValue').val(i);
+    $('#noSolvedValue').val(j);
+    $('#post_search').submit();
 
-  $(document).on("click", "#tagButton", function(event){
+  });
+
+  $(document).on("click", "#tagButtonCreate", function(event){
     //alert( $('#tagButton').attr("value"));
     var value = $('#tagsValues').val();
     $("h4").remove();

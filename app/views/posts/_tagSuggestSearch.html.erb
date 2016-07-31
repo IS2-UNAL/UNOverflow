@@ -1,0 +1,14 @@
+<% if @tags %>
+  <% if !@tags.empty? %>
+    <div class="row tagFieldSearch">
+      <div class="panel panel-info">
+        <div class="panel-body">
+          <% @tags.each do |tag| %>
+            <h4><%= tag.title %></h4>
+            <button type="button" class="btn btn-success" id="tagButton" value="<%= tag.id %>"><%=t('.search')%></button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
