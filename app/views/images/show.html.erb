@@ -1,19 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h2><%= t('.details')%></h2>
+</div>
+<img src="<%= @image.image.url %>" class="img-thumbnail img-responsive" width="300" height="300" >
+<br>
+<br>
+<% if @image.post %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td><h3>Post id</h3></td>
+          <td><h3><%= @image.post.id %></h3></td>
+        </tr>
+        <tr>
+          <td><h3><%= t('.post_title')%></h3></td>
+          <td><h3><%=@image.post.title %></h3></td>
+        </tr>
+        <tr>
+          <td><h3><%= t('.created_by')%></h3></td>
+          <td><h3><%=@image.post.user.username %></h3></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<p>
-  <strong>Image:</strong>
-  <%= @image.image %>
-</p>
+<% end %>
+<% if @image.comment %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td><h3>Comment id</h3></td>
+          <td><h3><%= @image.comment.id %></h3></td>
+        </tr>
 
-<p>
-  <strong>Comment:</strong>
-  <%= @image.comment %>
-</p>
+        <tr>
+          <td><h3><%= t('.created_by')%></h3></td>
+          <td><h3><%=@image.comment.user.username %></h3></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<p>
-  <strong>Post:</strong>
-  <%= @image.post %>
-</p>
-
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<% end %>
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to t('.back'), images_path, :class=>"btn btn-default" %>
+  </div>
+</div>
