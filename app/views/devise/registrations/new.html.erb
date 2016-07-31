@@ -48,7 +48,7 @@
     <div class="col-xs-6">
       <div class="form-group">
         <%= f.label :role, :for=>"roleField" %>
-        <%= f.select(:role, User.roles.keys, {}, { :class=>"form-control" , :id=>"roleField"}) %>
+        <%= f.select(:role, User.roles.keys, {}, { :disabled => true,:class=>"form-control" , :id=>"roleField"}) %>
       </div>
     </div>
   </div>

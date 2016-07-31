@@ -97,6 +97,15 @@ en:
       week: "Week"
       month: "Month"
       new_button: "New"
+      filters: "Filters"
+      user_placeholder: "Enter the username of the user"
+      tag_placeholder: "Enter the name of the tag"
+      solve: "Solved"
+      no_solved: "No solved"
+    userSuggest:
+      search: "Search"
+    tagSuggestSearch:
+      search: "Search"
     form:
       create: "Create"
     new:

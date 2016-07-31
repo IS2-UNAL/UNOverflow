@@ -40,19 +40,48 @@
       <% else %>
         <%= hidden_field_tag :type, 'lastMonth' %>
       <% end %>
+      <%= hidden_field_tag :solvedValue, "1" %>
+      <%= hidden_field_tag :noSolvedValue, "1" %>
       <%= text_field_tag :searchPost, nil, class:"form-control", placeholder: t('.search_post')%>
     </div>
   <% end %>
-  <div class="col-xs-12 col-sm-8 col-lg-9">
-    <div id="posts">
-      <%= render 'posts' %>
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-8 col-lg-9">
+      <p class="pull-right visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><%= t('.filters') %></button>
+      </p>
+      <div id="posts">
+        <%= render 'posts' %>
+      </div>
+      <div id="paginate">
+        <%= render 'paginate' %>
+      </div>
     </div>
-    <div id="paginate">
-      <%= render 'paginate' %>
+
+    <div class="col-xs-12 col-sm-4 col-lg-3 sidebar-offcanvas" id="sidebar" style="overflow-y:auto;">
+      <div class="list-group" id="advancedFilters">
+        <div class="list-group-item">
+          <input type="text" id="userField" class="form-control" placeholder="<%=t('user_placeholder')%>">
+          <div id="userSuggest">
+            <%=render 'userSuggest' %>
+          </div>
+        </div>
+        <div class="list-group-item">
+          <input type="text" id="tagFieldSearch" class="form-control" placeholder="<%=t('.tag_placeholder')%>">
+          <div id="tagSuggest">
+            <%= render 'tagSuggestSearch' %>
+          </div>
+        </div>
+        <div class="list-group-item">
+          <div class="checkbox">
+            <label><input type="checkbox" id="solved" value="" checked ><%= t('.solved')%></label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" id="noSolved" value="" checked ><%= t('.no_solved')%></label>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col-xs-12 col-sm-4 col-lg-3">
-    In this part we should put the advanced filters
   </div>
 <% end %>
 

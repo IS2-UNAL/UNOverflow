@@ -61,17 +61,81 @@ class PostsController < ApplicationController
         type = 1.month.ago
     end
     if type == ""
-      @posts = Post.search(params[:page],params[:searchPost].strip)
+      @posts = Post.search(params[:page],params[:searchPost].strip,params[:solvedValue],params[:noSolvedValue])
     else
-      @posts = Post.searchDate(params[:page],params[:searchPost].strip,type)
+      @posts = Post.searchDate(params[:page],params[:searchPost].strip,type,params[:solvedValue],params[:noSolvedValue])
     end
     render "index"
   end
-
-  def suggest
-    @tags = Tag.tagSuggest(params[:titleTag])
+  def searchTag
+    type = ""
+    case params[:type]
+      when "all"
+        type = ""
+      when "lastDay"
+        type = 1.days.ago
+      when "lastWeek"
+        type = 1.week.ago
+      when "lastMonth"
+        type = 1.month.ago
+    end
+    tag = Tag.find(params[:id])
+    if type ==""
+      if (params[:solved] == "1" && params[:noSolved] == "1") || (params[:solved] == "0" && params[:noSolved] == "0")
+        @posts = tag.posts.paginate(:page=>params[:page],:per_page=>10).order('title ASC')
+      elsif params[:solved] == "1"
+        @posts = tag.posts.where("is_solved = ?",true).paginate(:page=>params[:page],:per_page=>10).order('title ASC')
+      elsif params[:noSolved] == "1"
+        @posts = tag.posts.where("is_solved = ?",false).paginate(:page=>params[:page],:per_page=>10).order('title ASC')
+      end
+    else
+      if (params[:solved] == "1" && params[:noSolved] == "1") || (params[:solved] == "0" && params[:noSolved] == "0")
+        @posts = tag.posts.where("updated_at >= ?", type).paginate(:page=>params[:page],:per_page=>10).order('title ASC')
+      elsif params[:solved] == "1"
+        @posts = tag.posts.where("updated_at >= ? AND is_solved = ?", type,true).paginate(:page=>params[:page],:per_page=>10).order('title ASC')
+      elsif params[:noSolved] == "1"
+        @posts = tag.posts.where("updated_at >= ? AND is_solved = ?", type,false).paginate(:page=>params[:page],:per_page=>10).order('title ASC')
+      end
+    end
+    render 'index.js.erb'
+  end
+  def searchUser
+    type = ""
+    case params[:type]
+      when "all"
+        type = ""
+      when "lastDay"
+        type = 1.days.ago
+      when "lastWeek"
+        type = 1.week.ago
+      when "lastMonth"
+        type = 1.month.ago
+    end
+    user = User.where("username = ?",params[:username].strip)
+    if type == ""
+      @posts = Post.searchUser(params[:page],user[0].id,params[:solved],params[:noSolved])
+    else
+      @posts = Post.searchUserDate(params[:page],user[0].id,type,params[:solved],params[:noSolved])
+    end
+    render "index.js.erb"
+  end
+  def userSuggest
+    @users = User.userSuggest(params[:username])
     if request.xhr?
 
+    else
+      redirect_to root_path
+    end
+  end
+  def suggest
+
+    @tags = Tag.tagSuggest(params[:titleTag])
+    if request.xhr?
+      if params[:filter]
+        render 'suggestFilter'
+      else
+        render 'suggest'
+      end
     else
       redirect_to root_path
     end

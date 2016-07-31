@@ -1,0 +1,18 @@
+<% if @users %>
+  <% if !@users.empty? %>
+    <div class="row userSuggest">
+      <div class="panel panel-info">
+        <div class="panel-body">
+          <% @users.each do |user| %>
+            <div class="col-xs-12">
+              <h4><%=user.username%></h4>
+              <img src="<%=user.avatar.thumb.url %>" width="50" height="50" class="img-thumbnail img-responsive">
+              <buttton type="button" class="btn btn-success" id="userButton" value="<%= user.username%>"><%=t('.search')%></buttton>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+<% end %>

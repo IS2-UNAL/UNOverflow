@@ -24,6 +24,9 @@ Rails.application.routes.draw do
         get 'lastMonth', to: :lastMonth
         get 'suggest', to: :suggest
         get 'search', to: :search
+        get 'userSuggest', to: :userSuggest
+        get 'searchUser', to: :searchUser
+        get 'searchTag', to: :searchTag
       end
 
     end

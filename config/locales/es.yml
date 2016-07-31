@@ -106,6 +106,15 @@ es:
       week: "Ultima semana"
       month: "Ultimo mes"
       new_button: "Nuevo"
+      filters: "Filtros"
+      user_placeholder: "Ingrese el nombre de usuario"
+      tag_placeholder: "Ingrese el nombre del tag"
+      solve: "Solucionado"
+      no_solved: "No solucionado"
+    userSuggest:
+      search: "Buscar"
+    tagSuggestSearch:
+      search: "Buscar"
     form:
       create: "Crear"
     new:
