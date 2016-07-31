@@ -34,6 +34,15 @@ en:
       log_in: "Log in"
       sign_up: "Sign up"
       my_comments: "My comments"
+  images:
+    index:
+      images: "Images"
+      show: "Show"
+      destroy: "Destroy"
+    show:
+      post_title: "Title"
+      created_by: "Created by"
+      back: "Back"
   page:
     index:
       carrousel_caption_one: "Look for questions through different filters like tags, dates and more"

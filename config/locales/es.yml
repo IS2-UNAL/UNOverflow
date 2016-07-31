@@ -44,6 +44,15 @@ es:
       log_in: "Iniciar sesion"
       sign_up: "Registrarse"
       my_comments: "Mis comentarios"
+  images:
+    index:
+      images: "Imagenes"
+      show: "Mostrar"
+      destroy: "Destruir"
+    show:
+      post_title: "Titulo"
+      created_by: "Creado por"
+      back: "Atras"
   page:
     index:
       carrousel_caption_one: "Busque preguntas por una infinidad de infiltros como los son tags, fecha, tendencia de preguntas entre otros"
@@ -100,7 +109,7 @@ es:
     update:
       updated: "El comentario fue exitosamente actualizado"
     destroy:
-      destroy: "Comment was successfully destroyed."
+      destroy: "El comentrio fue exitosamente destruido"
   posts:
     commentsPost:
       comments: "Comentarios"

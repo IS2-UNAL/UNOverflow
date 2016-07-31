@@ -1,10 +1,13 @@
 class ImagesController < ApplicationController
+  before_action :authenticate_user!, only: [:edit,:new,:create,:update,:destroy,:index,:show]
+  before_action :isAdmin, only: [:edit,:new,:create,:update,:destroy,:index,:show]
   before_action :set_image, only: [:show, :edit, :update, :destroy]
+
 
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = Image.all.paginate(:page=> params[:page],:per_page=>30).order('created_at DESC')
   end
 
   # GET /images/1
@@ -62,6 +65,11 @@ class ImagesController < ApplicationController
   end
 
   private
+    def isAdmin
+      if current_user.role != "Admin"
+        redirect_to root_path
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_image
       @image = Image.find(params[:id])

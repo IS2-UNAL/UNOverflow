@@ -8,14 +8,14 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :likes_comments_by_users do
+    resources :likes_comments_by_users, except:[:new,:create,:update,:destroy,:index,:show,:edit] do
       collection do
         post 'addLike', to: :addLike
       end
     end
-    resources :images
+    resources :images, except: [:new,:create,:update,:edit]
     resources :posts do
-      resources :comments, only: [:index,:new,:create]
+      resources :comments, only: [:new,:create], except:[:index]
       collection do
         post 'addImage', to: :addImage
         get 'myPosts', to: :myPosts
