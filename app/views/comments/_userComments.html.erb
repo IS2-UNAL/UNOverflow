@@ -1,0 +1,16 @@
+<% @comments.each do |comment| %>
+  <tr>
+    <td class="col-sm-8">
+      <%= comment.answer.html_safe %>
+    </td>
+    <td class="col-sm-4">
+      <%= link_to t('.show'), comment, :class=>"btn btn-success"%>
+      <% if user_signed_in? %>
+        <% if current_user == comment.user %>
+          <%= link_to t('.edit'), edit_comment_path(comment), :class=>"btn btn-primary" %>
+          <%= link_to t('.destroy'), comment, :class=>"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }%>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
