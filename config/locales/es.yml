@@ -43,6 +43,7 @@ es:
       log_out: "Cerrar sesion"
       log_in: "Iniciar sesion"
       sign_up: "Registrarse"
+      my_comments: "Mis comentarios"
   page:
     index:
       carrousel_caption_one: "Busque preguntas por una infinidad de infiltros como los son tags, fecha, tendencia de preguntas entre otros"
@@ -62,6 +63,10 @@ es:
     addLike:
       thanks: "Gracias por votar"
   comments:
+    userComments:
+      show: "Mostrar"
+      edit: "Editar"
+      destroy: "Destruir"
     show: "Mostrar"
     edit: "Editar"
     destroy: "Destruir"
@@ -79,6 +84,10 @@ es:
     new:
       new_comment: "Nuevo comentario"
       back: "Atras"
+    myComments:
+      my_comments: "Mis comentarios"
+      answer: "Respuesta"
+      actions: "Accioines"
     show:
       add_image: "Añadir imagen"
       details: "Detalles"

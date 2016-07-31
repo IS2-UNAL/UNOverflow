@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit,:new,:create,:update,:destroy]
+  before_action :authenticate_user!, only: [:edit,:new,:create,:update,:destroy,:myComments]
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
@@ -7,7 +7,9 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
   end
-
+  def myComments
+    @comments = Comment.where("user_id = ?" ,current_user.id).paginate(:page=>params[:page],:per_page=>10).order("updated_at ASC")
+  end
   def addImage
     if request.xhr?
       @comment = Comment.find(params[:commentID])

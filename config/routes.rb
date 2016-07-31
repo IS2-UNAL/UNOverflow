@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:show,:edit,:update,:destroy] do
       collection do
+        get  'myComments', to: :myComments
         post 'addImage', to: :addImage
       end
     end

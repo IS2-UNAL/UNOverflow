@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h2><%= t('.my_comments') %></h2>
+</div>
+<% if !@comments.empty? %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="col-sm-8">
+            <%= t('.answer')%>
+          </th>
+          <th class="col-sm-4">
+            <%= t('.actions') %>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="comments">
+        <%= render 'userComments' %>
+      </tbody>
+    </table>
+  </div>
+  <div class="paginate">
+    <%= render 'paginate' %>
+  </div>
+<% end %>
