@@ -1,5 +1,7 @@
 <div class="page-header">
-  <%= link_to t('.new_comment'), new_post_comment_path(@post), :class=>"btn btn-success  pull-right" %>
+  <% if user_signed_in? %>
+    <%= link_to t('.new_comment'), new_post_comment_path(@post), :class=>"btn btn-success  pull-right" %>
+  <% end %>
   <h2><%= t('.detail')%></h2>
 </div>
 <div class="row">
