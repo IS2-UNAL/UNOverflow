@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  namespace :api, defaults: {formart: :json},
-                  constraints:{subdomain: 'api'}, path: '/' do
-        scope module: :v1 do
-          resources :users, :only => [:show]
+  namespace :api, defaults: {formart: :json}  do
+        namespace :v1 do
+          resources :users, :only => [:show,:index]
+          resources :tags_api, :only => [:show,:index,:create,:update,:destroy]
+          resources :comments_api, :only => [:show,:index]
+          resources :posts_api, :only =>[:show,:index]
         end
 
   end

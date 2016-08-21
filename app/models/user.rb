@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  before_create :generate_authentication_token!
   mount_uploader :avatar, ImageUploader
   has_many :comments, dependent: :destroy
   has_many :post, dependent: :destroy
@@ -10,6 +11,7 @@ class User < ApplicationRecord
     "User"  => 0,
     "Admin" => 1
   }
+  validates :auth_token, uniqueness: true
   validates :name, :username, :avatar, :presence => true
   validates :email, :username, :uniqueness => true
   validates :role, :inclusion => roles.keys
@@ -21,6 +23,11 @@ class User < ApplicationRecord
     where('username LIKE ?', "%#{username}%")
   end
   private
+    def generate_authentication_token!
+      begin
+        self.auth_token = Devise.friendly_token
+      end while self.class.exists?(auth_token: auth_token)
+    end
     def image_size_validation
       errors[:avatar] << "should be lees than 1MB" if avatar.size > 1.megabytes
     end
