@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api, defaults: {formart: :json},
+                  constraints:{subdomain: 'api'}, path: '/' do
+        scope module: :v1 do
+          resources :users, :only => [:show]
+        end
+
+  end
   devise_for :users, :path  => '', :path_names => {:sign_in => 'loginHasAnImposibleURLBecauseWhereAreGoingToUseAModal',:sign_out=>'logout'}
   scope '(:locale)' do
     scope 'admin' do
