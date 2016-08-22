@@ -8,6 +8,11 @@ class Api::V1::UsersController < ApiController
                                      total_objects: @users.total_entries,
                                      next_page: @users.next_page } },status: 200
   end
+  def reloadUser
+    if @user
+      render json: @user, status: 200
+    end
+  end
   def show
     respond_with User.find(params[:id])
   end

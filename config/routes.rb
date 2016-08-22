@@ -4,9 +4,10 @@ Rails.application.routes.draw do
           resources :users, :only => [:show,:index] do
             collection do
               post 'login', to: :login
+              post 'reloadUser', to: :reloadUser
             end
           end
-          resources :tags_api, :only => [:show,:index,:create,:update,:destroy] 
+          resources :tags_api, :only => [:show,:index,:create,:update,:destroy]
           resources :comments_api, :only => [:show,:create,:update,:destroy]
           resources :posts_api, :only =>[:show,:index,:create,:update,:destroy]
         end
