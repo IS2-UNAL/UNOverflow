@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {formart: :json}  do
         namespace :v1 do
-          resources :users, :only => [:show,:index]
-          resources :tags_api, :only => [:show,:index,:create,:update,:destroy]
-          resources :comments_api, :only => [:show,:index]
-          resources :posts_api, :only =>[:show,:index]
+          resources :users, :only => [:show,:index] do
+            collection do
+              post 'login', to: :login
+            end
+          end
+          resources :tags_api, :only => [:show,:index,:create,:update,:destroy] 
+          resources :comments_api, :only => [:show,:create,:update,:destroy]
+          resources :posts_api, :only =>[:show,:index,:create,:update,:destroy]
         end
 
   end

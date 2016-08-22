@@ -3,7 +3,12 @@ class Api::V1::TagsApiController < ApiController
   before_action :isAdmin,only:[:create,:update,:destroy]
   before_action :tag_params, only: [:create,:update]
   def index
-    respond_with Tag.all
+    @tags = Tag.all.paginate(:page => params[:page],:per_page => 25)
+    render json: @tags, meta: { pagination:
+                                   { per_page: 25,
+                                     total_pages: @tags.total_pages,
+                                     total_objects: @tags.total_entries,
+                                     next_page: @tags.next_page } },status: 200
   end
   def show
     respond_with Tag.find(params[:id])
