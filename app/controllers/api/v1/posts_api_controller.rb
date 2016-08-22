@@ -5,9 +5,9 @@ class Api::V1::PostsApiController < ApiController
     @posts = Post.all.paginate(:page => params[:page],:per_page => 25)
     render json: @posts, meta: { pagination:
                                    { per_page: 25,
-                                     total_pages: @users.total_pages,
-                                     total_objects: @users.total_entries,
-                                     next_page: @users.next_page } },status: 200
+                                     total_pages: @posts.total_pages,
+                                     total_objects: @posts.total_entries,
+                                     next_page: @posts.next_page } },status: 200
   end
   def create
     @post = Post.new(post_params)
