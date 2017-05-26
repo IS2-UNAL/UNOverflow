@@ -14,7 +14,7 @@ class Api::V1::UsersController < ApiController
     end
   end
   def show
-    respond_with User.find(params[:id])
+    responde json: User.find(params[:id]), status:200
   end
   def login
     if params.key?('email') && params.key?('user_password')

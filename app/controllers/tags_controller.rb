@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit,:new ,:upadate,:destroy,:create]
-  before_action :set_tag, only: [:show, :edit, :update, :destroy, :questionsByTag], :except =>[:index]
+  before_action :authenticate_user!, only: [:edit,:new ,:upadate,:destroy,:create,:subscribeByTag,:unsubscribeByTag,:favoriteTags]
+  before_action :set_tag, only: [:show, :edit, :update, :destroy, :questionsByTag,:subscribeByTag,:unsubscribeByTag]
   before_action :isAdmin, only: [:edit,:new, :upadate,:destroy]
 
   # GET /tags
@@ -43,6 +43,37 @@ class TagsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def subscribeByTag
+    a = TagUser.new(user_id: current_user.id,tag_id: @tag.id)
+    respond_to do |format|
+      if a.save
+        format.html { redirect_to tags_path, notice: "We have created your subscription" }
+      else
+        format.html { redirect_to tags_path }
+      end
+    end
+  end
+
+  def favoriteTags
+    search = params[:search]
+    search ||= ""
+    @tags = current_user.tags.tagSearch(params[:page],search.strip,"ASC")
+    
+  end
+
+  def unsubscribeByTag
+    a = TagUser.where(user_id: current_user.id,tag_id: @tag.id).first
+    respond_to do |format|
+      if a
+        a.destroy
+        format.html { redirect_to tags_path, notice: "We have destroyed your subscription" }
+      else
+        format.html { redirect_to tags_path}
+
       end
     end
   end

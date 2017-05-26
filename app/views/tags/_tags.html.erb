@@ -9,6 +9,11 @@
 
       <%= link_to t('.show'), tag, :class=>"btn btn-success btn-md" %>
       <% if user_signed_in? %>
+        <% if !TagUser.where(tag_id: tag.id).where(user_id:current_user.id).first %>
+          <%= link_to "follow", subscribeByTag_tag_path(tag), :class =>"btn btn-warning btn-md", :method=> :post, :data => {:confirm => "Are you sure, that you want to follow this tag? \n if you follow you will receive an email if a new question is made"} %>
+        <% else %>
+          <%= link_to "unfollow", unsubscribeByTag_tag_path(tag), :class =>"btn btn-danger btn-md", :method=> :delete, :data => {:confirm => "Are you sure, that you want to unfollow this tag? \n if you unfollow you won't receive an email if a new question is made"} %>
+        <% end %>
         <% if current_user.role == "Admin" %>
           <%= link_to t('.edit'), edit_tag_path(tag), :class=>"btn btn-primary btn-md" %>
           <%= link_to t('.destroy'), tag, :class=>"btn btn-danger btn-md", method: :delete, data: { confirm: 'Are you sure?' } %>

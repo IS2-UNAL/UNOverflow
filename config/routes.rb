@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api, defaults: {formart: :json}  do
+  namespace :api, defaults: {format: :json}  do
         namespace :v1 do
           resources :users, :only => [:show,:index] do
             collection do
@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   scope '(:locale)' do
     scope 'admin' do
       resources :tags do
+        collection do
+          get 'favoriteTags', to: "tags#favoriteTags"
+        end
         member do
+          post 'subscribeByTag', to: "tags#subscribeByTag"
+          delete 'unsubscribeByTag', to: "tags#unsubscribeByTag"
           get 'questionsByTag', to: :questionsByTag
         end
       end

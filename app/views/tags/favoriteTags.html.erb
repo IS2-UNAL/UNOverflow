@@ -1,0 +1,39 @@
+<!--<% if notice %>
+  <div class="alert alert-warning alert-dismissible fade-in" id="alert-app" role="alert">
+    <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+      <span>&times;</span>
+    </button>
+    <%= notice %>
+  </div>
+<% end %> -->
+<div class="page-header">
+  <h2>Favorite tags</h2>
+</div>
+
+<% if !@tags.empty? %>
+  <%= form_tag favoriteTags_tags_path, :method => 'get', :id => "tags_search", remote: true do %>
+    <div class="form-group">
+      <%= text_field_tag :search, nil, class:"form-control", placeholder: 'Enter the name of the tag'%>
+    </div>
+  <% end %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="col-md-8" id="titleOrder">
+            <%= t('.title')%>
+          </th>
+          <th class="col-md-4"><%= t('.actions')%></th>
+        </tr>
+      </thead>
+      <tbody id="tags">
+        <%= render 'tags' %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div id="paginate">
+  <%= render 'paginate' %>
+</div>
+
+<br>

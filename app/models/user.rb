@@ -7,16 +7,18 @@ class User < ApplicationRecord
   has_many :post, dependent: :destroy
   has_many :likes_comments_by_users, dependent: :destroy
   has_many :comments, through: :likes_comments_by_users
+  has_many :tag_users, dependent: :destroy
+  has_many :tags, through: :tag_users
   enum role:{
     "User"  => 0,
     "Admin" => 1
   }
   validates :auth_token, uniqueness: true
-  validates :name, :username, :avatar, :presence => true
+  validates :name, :username, :presence => true
   validates :email, :username, :uniqueness => true
   validates :role, :inclusion => roles.keys
-  validates_processing_of :avatar
-  validate :image_size_validation
+  #validates_processing_of :avatar
+  #validate :image_size_validation
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable
   def self.userSuggest(username)

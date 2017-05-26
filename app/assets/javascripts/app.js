@@ -323,11 +323,11 @@ $(document).ready(function(){
       setTimeout(function(){
         var rejectedFiles = _this.getRejectedFiles();
         if (rejectedFiles.length != 0) {
-          alert("This file is not accepted")
+          alert("This file is not accepted");
         }
-        $("#modalDropzone").modal('hide')
-        mediaDropzone.removeFile(file)
-        window.location.href = (response.name+response.id)
+        $("#modalDropzone").modal('hide');
+        mediaDropzone.removeFile(file);
+        window.location.href = (response.name+response.id); 
       },2000);
     }
 

@@ -176,12 +176,16 @@ class PostsController < ApplicationController
     values = value.split(",")
     @post = Post.new(post_params)
     @post.user_id =  current_user.id
+    users = Set.new
     values.each do |a|
       tag = Tag.where("title = ?",a).first();
+      users.merge(tag.users.pluck(:email))
       @post.tags << tag
     end
+
     respond_to do |format|
       if @post.save
+        PostMailer.notification(users.to_a,@post.id).deliver_now
         format.html { redirect_to @post, notice: t('.created') }
         format.json { render :show, status: :created, location: @post }
       else
@@ -228,9 +232,11 @@ class PostsController < ApplicationController
           redirect_to root_path
         end
     end
+
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find_by_id(params[:id])
     end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params

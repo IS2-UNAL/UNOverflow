@@ -1,5 +1,7 @@
 class Tag < ApplicationRecord
   has_and_belongs_to_many :posts
+  has_many :tag_users, dependent: :destroy
+  has_many :users, through: :tag_users
   validates :title, :description, presence: true
   validates :title, uniqueness: true
   validates :title, length: {in:1..250}

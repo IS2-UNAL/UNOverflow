@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/galetahub/simple-captcha.git
+  revision: 2602bf19a63df25929960b5a7721a9d265281ec1
+  specs:
+    simple_captcha (0.1.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -360,6 +366,7 @@ DEPENDENCIES
   rails (~> 5.0.0)
   rails_12factor
   sass-rails (~> 5.0)
+  simple_captcha!
   spring
   spring-watcher-listen (~> 2.0.0)
   tinymce-rails
@@ -369,4 +376,4 @@ DEPENDENCIES
   will_paginate-bootstrap
 
 BUNDLED WITH
-   1.12.5
+   1.14.6
