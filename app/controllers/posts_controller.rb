@@ -185,7 +185,10 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        PostMailer.notification(users.to_a,@post.id).deliver_now
+        users = users.to_a
+        if !users.empty?
+          PostMailer.notification(users.to_a,@post.id).deliver_now
+        end
         format.html { redirect_to @post, notice: t('.created') }
         format.json { render :show, status: :created, location: @post }
       else
